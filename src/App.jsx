@@ -6,7 +6,7 @@ import Q_Feed from 'components/Q_Feed';
 import './App.css';
 
 function App() {
-  const [currentView, setCurrentView] = useState('question');
+  const [currentView, setCurrentView] = useState('home');
   const [token, setToken] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
