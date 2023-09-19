@@ -1,8 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Box, Stack, Container } from '@mui/material';
+import axios from 'axios';
 
 const Q_Detail = () => {
-  const [questionID, setQuestionID] = useState(0); // [1]
+  const [questionID, setQuestionID] = useState(1); // [1]
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Define an async function
+    const fetchData = async () => {
+      try {
+        // Make the API call
+        const response = await axios.get(`https://qb.fly.dev/questions/${questionID}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Token aaf3a704943ad0a3ef572e69cd618c3c5cedb757',
+          }
+        });
+
+        // Set the response data to state
+        setData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        // Handle the error
+        console.error('There was an error fetching data', error);
+      }
+    };
+
+    // Call the async function
+    fetchData();
+  }, []); // Empty dependency array means this useEffect runs once when component mounts
+
+  
 
   const [question, setQuestion] = useState({
     answers: [],
@@ -14,7 +43,7 @@ const Q_Detail = () => {
   });
 
   
-    
+  
 
   useEffect(() => {
     // Simulate fetching data from an API or database
