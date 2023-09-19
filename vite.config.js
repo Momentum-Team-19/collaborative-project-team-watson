@@ -11,7 +11,4 @@ export default defineConfig({
       contexts: '/src/contexts',
     },
   },
-  optimizeDeps: {
-    exclude: ['react-loading-skeleton'],
-  },
 });
