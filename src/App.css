@@ -170,4 +170,10 @@ header {
   transition: transform 0.2s;
 }
 
+.q-box {
+  transition: transform .3s ease-in-out !important;
+}
 
+.q-box:hover {
+  transform: scale(1.03) !important;
+}
