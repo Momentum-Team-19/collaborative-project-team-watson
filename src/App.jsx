@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import NavBar from 'components/NavBar';
+import Login from 'components/Login';
 import Q_Detail from 'components/Q_Detail';
 import Q_Feed from 'components/Q_Feed';
 import './App.css';
 
 function App() {
   const [currentView, setCurrentView] = useState('question');
+  const [token, setToken] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   let content;
 
@@ -13,6 +16,7 @@ function App() {
     content = (
       <div>
         <NavBar />
+        <Login setToken={setToken} />
         <Q_Feed />
       </div>
     );
@@ -20,6 +24,7 @@ function App() {
     content = (
       <div>
         <NavBar />
+        <Login setToken={setToken} />
         <Q_Detail />
       </div>
     );
