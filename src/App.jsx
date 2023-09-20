@@ -36,7 +36,11 @@ function App() {
 
   return (
     <>
-      <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setToken={setToken}
+      />
       <Routes>
         <Route path='/' element={<Q_Feed />} />
         <Route

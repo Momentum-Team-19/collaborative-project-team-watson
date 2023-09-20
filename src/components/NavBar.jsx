@@ -1,10 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = ({ isLoggedIn }) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   const location = useLocation();
 
   const handleHome = () => {
     window.location.reload();
+  };
+
+  const handleLogout = () => {
+    setToken('');
+    setIsLoggedIn(false);
   };
 
   return (
@@ -25,8 +30,10 @@ const NavBar = ({ isLoggedIn }) => {
         </div>
         {isLoggedIn ? (
           <div className='loginContainer'>
-            <p className='signInText'>logout</p>
-            <p className='signUpText'>user</p>
+            <p className='logoutText' onClick={handleLogout}>
+              logout
+            </p>
+            <p className='activeUserLink'>😎</p>
           </div>
         ) : (
           <div className='loginContainer'>
