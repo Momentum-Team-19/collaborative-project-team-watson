@@ -80,12 +80,10 @@ header {
   width: 100%;
 }
 
-.pagenameContainer {
-  font-family: "Gill Sans", sans-serif;
+.linkContainer {
   font-size: 1.8em;
   font-weight: 900;
   line-height: .8;
-  color: var(--clr-accent);
   margin: 0;
   justify-content: center;
   align-items: center;
@@ -94,9 +92,18 @@ header {
   position: absolute;
   left: 0px;
 }
+.linkContainer:active {
+  transform: scale(90%);
+  transition: transform 0.2s;
+}
 
-.pagenameText {
+.homepageLink {
   cursor: pointer;
+  font-family: "Gill Sans", sans-serif;
+  font-size: 1.2em;
+  font-weight: 900;
+  line-height: .8;
+  color: var(--clr-accent);
 }
 
 .searchContainer {
@@ -225,7 +232,7 @@ header {
   align-items: center;
 }
 
-.username-label {
+.username-label, .email-label {
   font-family: "Avant Garde", sans-serif;
   font-size: 1.2em;
   font-weight: 400;
@@ -233,7 +240,11 @@ header {
   color: var(--clr-text);
 }
 
-.username-input-box {
+.email-label {
+  margin-left: 38px;
+}
+
+.username-input-box, .email-input-box {
   border: 1px solid var(--clr-break);
   border-radius: 6px;
   padding: 4px;
@@ -242,11 +253,19 @@ header {
   font-size: 1em;
   color: var(--clr-text);
 }
-.username-input-box:hover {
+.username-input-box:hover, .email-input-box:hover {
   border: 1px solid var(--clr-accent);
 }
 
+.email-input {
+  margin-top: 5px;
+}
+
 .password-input {
+  margin-top: 5px;
+}
+
+.confirm-password-input {
   margin-top: 5px;
   margin-bottom: 10px;
 }
@@ -257,6 +276,15 @@ header {
   font-weight: 400;
   line-height: .8;
   color: var(--clr-text);
+}
+
+.confirm-password-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: .8;
+  color: var(--clr-text);
+  margin-left: 15px;
 }
 
 .password-input-box {

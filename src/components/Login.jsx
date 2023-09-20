@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -8,7 +8,6 @@ const Login = ({ setToken, setIsLoggedIn }) => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ const Login = ({ setToken, setIsLoggedIn }) => {
         if (res.status === 200) {
           setToken(res.data.auth_token);
           setIsLoggedIn(true);
-          navigate(location.state?.from || '/');
+          navigate('/');
         }
       })
       .catch((err) => {

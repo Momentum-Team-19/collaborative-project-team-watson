@@ -3,10 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   const location = useLocation();
 
-  const handleHome = () => {
-    window.location.reload();
-  };
-
   const handleLogout = () => {
     setToken('');
     setIsLoggedIn(false);
@@ -15,10 +11,10 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   return (
     <>
       <header>
-        <div className='pagenameContainer'>
-          <p className='pagenameText' onClick={handleHome}>
+        <div className='linkContainer'>
+          <Link to={{ pathname: '/' }} className='homepageLink'>
             Q!
-          </p>
+          </Link>
         </div>
         <div className='searchContainer'>
           <input
@@ -37,13 +33,12 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
           </div>
         ) : (
           <div className='loginContainer'>
-            <Link
-              to={{ pathname: '/login', state: { from: location.pathname } }}
-              className='signInText'
-            >
+            <Link to={{ pathname: '/login' }} className='signInText'>
               sign in
             </Link>
-            <p className='signUpText'>sign up</p>
+            <Link to={{ pathname: '/register' }} className='signUpText'>
+              sign up
+            </Link>
           </div>
         )}
       </header>
