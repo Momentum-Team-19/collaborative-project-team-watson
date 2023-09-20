@@ -1,4 +1,8 @@
+import { Link, useLocation } from 'react-router-dom';
+
 const NavBar = ({ isLoggedIn }) => {
+  const location = useLocation();
+
   const handleHome = () => {
     window.location.reload();
   };
@@ -26,7 +30,12 @@ const NavBar = ({ isLoggedIn }) => {
           </div>
         ) : (
           <div className='loginContainer'>
-            <p className='signInText'>sign in</p>
+            <Link
+              to={{ pathname: '/login', state: { from: location.pathname } }}
+              className='signInText'
+            >
+              sign in
+            </Link>
             <p className='signUpText'>sign up</p>
           </div>
         )}
