@@ -4,6 +4,7 @@ import { useState } from 'react';
 const Login = ({ setToken, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,15 +21,22 @@ const Login = ({ setToken, setIsLoggedIn }) => {
           setToken(res.data.auth_token);
           setIsLoggedIn(true);
         }
+      })
+      .catch((err) => {
+        console.log(err.response.data.non_field_errors[0]);
+        setError(err.response.data.non_field_errors[0]);
       });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='login-form-container'>
+      <form className='login-form' onSubmit={handleSubmit}>
         <div className='username-input'>
-          <label htmlFor='username'>Username: </label>
+          <label htmlFor='username' className='username-label'>
+            Username:{' '}
+          </label>
           <input
+            className='username-input-box'
             type='text'
             name='username'
             id='username'
@@ -37,11 +45,15 @@ const Login = ({ setToken, setIsLoggedIn }) => {
             onChange={(e) => {
               setUsername(e.target.value);
             }}
+            onFocus={() => setError(null)}
           />
         </div>
         <div className='password-input'>
-          <label htmlFor='password'>Password: </label>
+          <label htmlFor='password' className='password-label'>
+            Password:{' '}
+          </label>
           <input
+            className='password-input-box'
             type='password'
             name='password'
             id='password'
@@ -50,10 +62,12 @@ const Login = ({ setToken, setIsLoggedIn }) => {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            onFocus={() => setError(null)}
           />
         </div>
-        <div>
-          <input type='submit' value='Log In' />
+        {error && <div className='error-message'>{error}</div>}
+        <div className='login-button-container'>
+          <input type='submit' value='Log In' className='login-button' />
         </div>
       </form>
     </div>

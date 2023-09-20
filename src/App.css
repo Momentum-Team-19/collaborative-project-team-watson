@@ -15,6 +15,7 @@
   --clr-dark: #323232;
   --clr-break: #d6d7db;
   --clr-accent: #23b8dd;
+  --clr-text: #898989;
 }
 
 .darkMode {
@@ -177,3 +178,105 @@ header {
 .q-box:hover {
   transform: scale(1.03) !important;
 }
+
+.login-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  width: 300px;
+  border: 1px solid var(--clr-break);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.username-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: .8;
+  color: var(--clr-text);
+}
+
+.username-input-box {
+  border: 1px solid var(--clr-break);
+  border-radius: 6px;
+  padding: 4px;
+  padding-top: 5px;
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1em;
+  color: var(--clr-text);
+}
+.username-input-box:hover {
+  border: 1px solid var(--clr-accent);
+}
+
+.password-input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.password-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: .8;
+  color: var(--clr-text);
+}
+
+.password-input-box {
+  border: 1px solid var(--clr-break);
+  border-radius: 6px;
+  padding: 4px;
+  padding-top: 5px;
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1em;
+  color: var(--clr-text);
+}
+.password-input-box:hover {
+  border: 1px solid var(--clr-accent);
+}
+
+.error-message {
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  font-family: "Avant Garde", sans-serif;
+  font-size: .8em;
+  color: rgb(207, 5, 5);
+}
+
+.login-button-container {
+  margin-top: 10px;
+}
+
+.login-button {
+  border: 1px solid var(--clr-accent);
+  border-radius: 5px;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: var(--clr-accent);
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  color: var(--clr-light);
+  cursor: pointer;
+}
+.login-button:hover {
+  transform: scale(105%);
+  transition: transform 0.2s;
+}
+.login-button:active {
+  transform: scale(95%);
+  transition: transform 0.2s;
+}
+
