@@ -4,7 +4,7 @@ import Q_Box from 'components/Q_Box';
 import Q_Detail from './Q_Detail';
 import Q_Create from './Q_Create';
 
-const Q_Feed = () => {
+const Q_Feed = ({ token }) => {
 
   const [data, setData] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null); 
@@ -53,7 +53,7 @@ const Q_Feed = () => {
           {data && data.map((question, index) => (
             <Q_Box key={index} question={question} onClick={() => handleQuestionClick(question)} />
           ))}
-          <Q_Create />
+          <Q_Create token={token}/>
         </>
       )}
     </>

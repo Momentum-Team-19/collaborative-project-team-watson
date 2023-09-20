@@ -1,9 +1,0 @@
-Nathan To-Do's
-- Q_Detail
-    - get question data as a prop
-- Q_feed 
-    - map questions from query search
-    - each question clickable
-- Fetch component
-    - get question information
-    

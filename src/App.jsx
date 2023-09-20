@@ -42,7 +42,7 @@ function App() {
         setToken={setToken}
       />
       <Routes>
-        <Route path='/' element={<Q_Feed />} />
+        <Route path='/' element={<Q_Feed token={token}/>} />
         <Route
           path='/login'
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}

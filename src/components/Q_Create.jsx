@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, TextField, Box } from '@mui/material';
 
-const Q_Create = () => {
+const Q_Create = ({ token }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState("");
     // const [author, setAuthor] = useState("");
     const [body, setBody] = useState("");
 
-    const handleButtonClick = () => {
-        setShowForm(!showForm);
-      };
+    const handleCreateClick = () => {
+        if (token) {
+            setShowForm(!showForm);
+        } else {
+            alert('You must be logged in to create a question.');
+        }
+    };
     
-    const handleSubmit = async (e) => {
+    const handleSubmitClick = async (e) => {
     e.preventDefault();
 
     const questionData = {
@@ -25,7 +29,7 @@ const Q_Create = () => {
         const response = await axios.post('https://qb.fly.dev/questions', questionData, {
           headers: {
             'Accept': 'application/json',
-            'Authorization': 'Token aaf3a704943ad0a3ef572e69cd618c3c5cedb757', 
+            'Authorization': `Token ${token}`, 
           }
         });
         console.log('Successfully created question:', response.data);
@@ -42,12 +46,12 @@ const Q_Create = () => {
 
   return (
     <Box>
-      <Button variant="contained" color="primary" onClick={handleButtonClick}>
+      <Button variant="contained" color="primary" onClick={handleCreateClick}>
         Create Question
       </Button>
 
       {showForm && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitClick}>
           <TextField
             label="Title"
             variant="outlined"
