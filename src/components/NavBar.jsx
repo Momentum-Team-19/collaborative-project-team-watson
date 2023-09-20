@@ -1,4 +1,4 @@
-const NavBar = () => {
+const NavBar = ({ isLoggedIn }) => {
   const handleHome = () => {
     window.location.reload();
   };
@@ -19,10 +19,17 @@ const NavBar = () => {
             placeholder='Search...'
           ></input>
         </div>
-        <div className='loginContainer'>
-          <p className='signInText'>sign in</p>
-          <p className='signUpText'>sign up</p>
-        </div>
+        {isLoggedIn ? (
+          <div className='loginContainer'>
+            <p className='signInText'>logout</p>
+            <p className='signUpText'>user</p>
+          </div>
+        ) : (
+          <div className='loginContainer'>
+            <p className='signInText'>sign in</p>
+            <p className='signUpText'>sign up</p>
+          </div>
+        )}
       </header>
     </>
   );
