@@ -64,7 +64,6 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             onChange={(e) => {
               setUsername(e.target.value);
             }}
-            onFocus={() => setError(null)}
           />
         </div>
         <div className='email-input'>
@@ -81,7 +80,6 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            onFocus={() => setError(null)}
           />
         </div>
         <div className='password-input'>
