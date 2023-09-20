@@ -15,16 +15,16 @@ function App() {
   if (currentView === 'home') {
     content = (
       <div>
-        <NavBar />
-        <Login setToken={setToken} />
+        <NavBar isLoggedIn={isLoggedIn} />
+        <Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
         <Q_Feed />
       </div>
     );
   } else {
     content = (
       <div>
-        <NavBar />
-        <Login setToken={setToken} />
+        <NavBar isLoggedIn={isLoggedIn} />
+        <Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
         <Q_Detail />
       </div>
     );

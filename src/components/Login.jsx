@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +15,12 @@ const Login = ({ setToken }) => {
         username: username,
         password: password,
       })
-      .then((res) => setToken(res.data.auth_token));
+      .then((res) => {
+        if (res.status === 200) {
+          setToken(res.data.auth_token);
+          setIsLoggedIn(true);
+        }
+      });
   };
 
   return (
