@@ -3,15 +3,17 @@ To-Do's
 -Implement message for user if login failed ✅
   -.catch error
 
--Start looking into routing
+-User Registration page/form ✅
 
-- use local storage state
-
-- have user auto logged in upon registration
+- have user auto logged in upon registration ✅
   -immediatley after registration make another request using their credentials to get token, chain request after previous response
 
+-Start looking into routing ✅
+
+
+
+- use local storage state
 
 - add 'create' button to NavBar as well
 
 
--User Registration page/form 
