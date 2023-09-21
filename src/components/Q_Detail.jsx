@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Box, Stack, Container, Button } from '@mui/material';
 import axios from 'axios';
+import Q_Delete from './Q_Delete';
 
-const Q_Detail = ({ question, onBackClick }) => {
-  console.log(question);
+const Q_Detail = ({ question, onBackClick, token, children }) => {
+  if (!question) {
+    return <p>Loading... why is this happening???</p>;
+  }
 
   return (
     <>
@@ -31,6 +34,7 @@ const Q_Detail = ({ question, onBackClick }) => {
         onClick={onBackClick}>
         Back
       </Button>
+      <Q_Delete token={token} questionID={question.id} author={question.author}/>
     </>
   );
 };
