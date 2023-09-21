@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   const location = useLocation();
+  const { pathname } = location;
 
   const handleLogout = () => {
     setToken('');
@@ -24,23 +25,25 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
             placeholder='Search...'
           ></input>
         </div>
-        {isLoggedIn ? (
-          <div className='loginContainer'>
-            <p className='logoutText' onClick={handleLogout}>
-              logout
-            </p>
-            <p className='activeUserLink'>😎</p>
-          </div>
-        ) : (
-          <div className='loginContainer'>
-            <Link to={{ pathname: '/login' }} className='signInText'>
-              sign in
-            </Link>
-            <Link to={{ pathname: '/register' }} className='signUpText'>
-              sign up
-            </Link>
-          </div>
-        )}
+        {pathname !== '/login' && pathname !== '/register' ? (
+          isLoggedIn ? (
+            <div className='loginContainer'>
+              <p className='logoutText' onClick={handleLogout}>
+                logout
+              </p>
+              <p className='activeUserLink'>😎</p>
+            </div>
+          ) : (
+            <div className='loginContainer'>
+              <Link to={{ pathname: '/login' }} className='signInText'>
+                sign in
+              </Link>
+              <Link to={{ pathname: '/register' }} className='signUpText'>
+                sign up
+              </Link>
+            </div>
+          )
+        ) : null}
       </header>
     </>
   );
