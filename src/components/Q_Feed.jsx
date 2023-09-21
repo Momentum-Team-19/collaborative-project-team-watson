@@ -5,7 +5,7 @@ import Q_Create from "./Q_Create";
 const Q_Feed = ({ token, searchResults, setSelectedQuestion }) => {
 
   const handleQuestionClick = (question) => {
-    console.log(`Question clicked: ${question.title}`);
+    
     setSelectedQuestion(question);
   }
 
@@ -24,6 +24,7 @@ const Q_Feed = ({ token, searchResults, setSelectedQuestion }) => {
               />
             ))}
           <Q_Create token={token}/>
+
         </>
       </>
     );

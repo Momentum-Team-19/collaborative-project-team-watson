@@ -19,7 +19,7 @@ function App() {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   const handleQuestionClick = (question) => {
-    console.log(`Question clicked: ${question}`);
+    
     setSelectedQuestion(question);
   };
 
@@ -67,7 +67,8 @@ function App() {
                 token={token} 
                 selectedQuestion={selectedQuestion}
                 setSelectedQuestion={setSelectedQuestion}
-                />                
+              />
+
             </>
           }
         />
