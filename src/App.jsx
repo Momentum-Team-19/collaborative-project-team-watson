@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import useLocalStorageState from 'use-local-storage-state';
 import NavBar from 'components/NavBar';
 import Login from 'components/Login';
 import Register from 'components/Register';
@@ -12,7 +13,7 @@ import axios from 'axios';
 // import { fetchData } from './assets/requests';
 
 function App() {
-  const [token, setToken] = useState('3fa9ec7b75be340a6f8b975e5677e726807fb5b6');
+  const [token, setToken] = useLocalStorageState('userToken', '');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [data, setData] = useState(null);
   

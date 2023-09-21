@@ -39,8 +39,16 @@ const Register = ({ setToken, setIsLoggedIn }) => {
           }
         })
         .catch((err) => {
-          console.log(err.response.data.non_field_errors[0]);
-          setError(err.response.data.non_field_errors[0]);
+          if (err.response) {
+            console.log(err.response.data);
+            setError(err.response.data);
+          } else if (err.request) {
+            console.log(err.request);
+            setError('Network error');
+          } else {
+            console.log(err.message);
+            setError(err.message);
+          }
         });
     } else {
       setError('Passwords must match');
