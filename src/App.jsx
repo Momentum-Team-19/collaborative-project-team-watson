@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import useLocalStorageState from 'use-local-storage-state';
 import NavBar from 'components/NavBar';
 import Login from 'components/Login';
 import Register from 'components/Register';
@@ -8,7 +9,7 @@ import Q_Feed from 'components/Q_Feed';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useLocalStorageState('userToken', '');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
