@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from "react";
-
 import Q_Box from "components/Q_Box";
-import Q_Detail from "./Q_Detail";
 import Q_Create from "./Q_Create";
 
-const Q_Feed = ({ token, children, data }) => {
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-  
+const Q_Feed = ({ token, searchResults, setSelectedQuestion }) => {
 
   const handleQuestionClick = (question) => {
-    // console.log(`Question clicked: ${question}`);
+    console.log(`Question clicked: ${question.title}`);
     setSelectedQuestion(question);
-  };
+  }
 
-  const handleBackClick = () => {
-    setSelectedQuestion(null);
-  };
-
-  if (Array.isArray(data)) {
-    console.log('data checking', data);
+  if (Array.isArray(searchResults)) {
+    
     return (
       <>
         <>
           <p>Test Q_Feed</p>
-          {data &&
-            data.map((question, index) => (
+          {searchResults &&
+            searchResults.map((question, index) => (
               <Q_Box
                 key={index}
                 question={question}
                 onClick={() => handleQuestionClick(question)}
               />
             ))}
-          <Q_Create token={token} />
+          <Q_Create token={token}/>
         </>
       </>
     );

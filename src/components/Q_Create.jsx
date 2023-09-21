@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, TextField, Box } from '@mui/material';
 
 const Q_Create = ({ token }) => {
-    console.log(token);
+    
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState("");
     // const [author, setAuthor] = useState("");
