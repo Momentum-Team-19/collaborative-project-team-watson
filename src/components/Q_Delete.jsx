@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, TextField, Box } from "@mui/material";
 
-const Q_Delete = ({ token, questionID, author }) => {
+const Q_Delete = ({ token, selectedQuestionID, author }) => {
   const handleDeleteClick = async (e) => {
     e.preventDefault();
 
