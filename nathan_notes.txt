@@ -1,13 +1,9 @@
 Nathan To-Do's
-Completed- passing token from App to Q_feed to Q_create
-Completed- passing token from App to Q_detail to Q_delete
-    - need to clear question when delete pressed
+- add route for Question detail
 
 Question detail
-- include edit question
-- include delete question
-- include 
+
 
 Questions for Amy
 - Ask about endpoint (search questions needs token)
-- Composition with conditional rendering
+
