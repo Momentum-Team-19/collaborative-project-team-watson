@@ -75,7 +75,10 @@ function App() {
             </>
           }
         />
-        <Route path='/profile' element={<User_Profile token={token} />} />
+        <Route
+          path='/profile'
+          element={<User_Profile token={token} isLoggedIn={isLoggedIn} />}
+        />
 
         <Route
           path='/login'
