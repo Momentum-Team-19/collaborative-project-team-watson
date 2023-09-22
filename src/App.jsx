@@ -1,21 +1,22 @@
-import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import useLocalStorageState from "use-local-storage-state";
-import NavBar from "components/NavBar";
-import Login from "components/Login";
-import Register from "components/Register";
-import Q_Detail from "components/Q_Detail";
-import Q_Feed from "components/Q_Feed";
-import User_Profile from "./components/User_Profile";
-import Footer from "./components/Footer";
-import axios from "axios";
-import "./App.css";
+import { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import useLocalStorageState from 'use-local-storage-state';
+import NavBar from 'components/NavBar';
+import Login from 'components/Login';
+import Register from 'components/Register';
+import Q_Detail from 'components/Q_Detail';
+import Q_Feed from 'components/Q_Feed';
+import User_Profile from './components/User_Profile';
+import User_Edit from './components/User_Edit';
+import Footer from './components/Footer';
+import axios from 'axios';
+import './App.css';
 // import { fetchData } from './assets/requests';
 
 function App() {
-  const [token, setToken] = useLocalStorageState("userToken", "");
+  const [token, setToken] = useLocalStorageState('userToken', '');
   const [isLoggedIn, setIsLoggedIn] = useLocalStorageState(
-    "userIsLoggedIn",
+    'userIsLoggedIn',
     false
   );
   const [searchResults, setSearchResults] = useState(null);
@@ -28,7 +29,7 @@ function App() {
         // Make the API call
         const response = await axios.get(`https://qb.fly.dev/questions`, {
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
             Authorization: `Token ${token}`,
           },
         });
@@ -37,7 +38,7 @@ function App() {
         setSearchResults(response.data);
       } catch (error) {
         // Handle the error
-        console.error("There was an error fetching data", error);
+        console.error('There was an error fetching data', error);
       }
     };
 
@@ -53,7 +54,7 @@ function App() {
       />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <>
               <Q_Feed
@@ -65,7 +66,7 @@ function App() {
           }
         />
         <Route
-          path="/questions/:questionID"
+          path='/questions/:questionID'
           element={
             <Q_Detail
               token={token}
@@ -76,16 +77,21 @@ function App() {
         />
 
         <Route
-          path="/profile"
+          path='/profile'
           element={<User_Profile token={token} isLoggedIn={isLoggedIn} />}
         />
 
         <Route
-          path="/login"
+          path='/profile/edit'
+          element={<User_Edit isLoggedIn={isLoggedIn} token={token} />}
+        />
+
+        <Route
+          path='/login'
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route
-          path="/register"
+          path='/register'
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }
