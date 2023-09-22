@@ -16,10 +16,9 @@ To-Do's
 
 -Added Footer with 'home' link and authorization links ✅
 
+- use local storage state ✅
 
 
-
-- use local storage state
 
 - add 'create' button to NavBar as well
 
