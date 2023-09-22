@@ -4,11 +4,11 @@ import Q_Edit from "./Q_Edit";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Q_Answer from "./Q_Answer";
 
 const Q_Detail = ({ token }) => {
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
-  console.log("Q_Detail questionID:", questionID);
 
   useEffect(() => {
     // Define an async function
@@ -77,6 +77,7 @@ const Q_Detail = ({ token }) => {
 
       <Q_Edit token={token} questionID={questionID} />
       <Q_Delete token={token} questionID={questionID} />
+      <Q_Answer token={token} questionID={questionID} />
     </>
   );
 };

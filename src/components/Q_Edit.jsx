@@ -17,6 +17,7 @@ const Q_Edit = ({ token, questionID }) => {
       alert("You must be logged in to edit a question.");
     }
   };
+  
   const handleSubmitClick = async (e) => {
     e.preventDefault();
 
@@ -47,7 +48,7 @@ const Q_Edit = ({ token, questionID }) => {
 
   return (
     <Box>
-      <Button variant="contained" color="success" onClick={handleEditClick}>
+      <Button variant="contained" color="secondary" onClick={handleEditClick}>
         Edit Question
       </Button>
 
