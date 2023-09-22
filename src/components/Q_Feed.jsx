@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
 import Q_Box from "components/Q_Box";
 import Q_Create from "./Q_Create";
+import { Link } from "react-router-dom";
 
-const Q_Feed = ({ token, searchResults, setSelectedQuestion }) => {
-
-  const handleQuestionClick = (question) => {
-    
-    setSelectedQuestion(question);
-  }
+const Q_Feed = ({ token, searchResults }) => {
 
   if (Array.isArray(searchResults)) {
     
@@ -17,11 +12,11 @@ const Q_Feed = ({ token, searchResults, setSelectedQuestion }) => {
           <p>Test Q_Feed</p>
           {searchResults &&
             searchResults.map((question, index) => (
-              <Q_Box
-                key={index}
-                question={question}
-                onClick={() => handleQuestionClick(question)}
-              />
+              <Link to={`/questions/${question.id}`} key={question.id}>
+                <Q_Box
+                question={question}               
+                />
+              </Link>
             ))}
           <Q_Create token={token}/>
 
