@@ -2,6 +2,29 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 
 const Q_Box = ({ question, onClick }) => {
+
+  let topAnswer = ''
+  if (question.answers) {
+    if (question.answers.length > 0) {
+      topAnswer = question.answers[0].text
+    }
+  }
+
+  let answerContent;
+  if (topAnswer) {
+    answerContent = (
+      <Typography style={{ marginTop: "8px" }}>
+        Top Answer: {question.answers[0].text}
+      </Typography>
+    );
+  } else {
+    answerContent = (
+      <Typography style={{ marginTop: "8px", fontStyle: "italic" }}>
+        No answers yet.
+      </Typography>
+    );
+  }
+
   return (
     <Card className="q-box" onClick={onClick}
       style={{
@@ -17,7 +40,7 @@ const Q_Box = ({ question, onClick }) => {
           style={{ fontSize: "16px", fontWeight: "bold" }}
           gutterBottom
         >
-          {question.title}
+          Title: {question.title || 'Default Title'}
         </Typography>
         <Typography
           style={{
@@ -28,11 +51,14 @@ const Q_Box = ({ question, onClick }) => {
             marginBottom: "8px",
           }}
         >
-          {question.description}
+          Body: {question.body}
         </Typography>
-        <Typography style={{ fontSize: "12px", color: "#666" }}>
-          Author: {question.author} | Answers: {question.answers}
-        </Typography>
+        {/* style={{ fontSize: "12px", color: "#666" }} */}
+        {/* <Typography >
+          Author: {question.author || 'Default Author'} | Answers: {question.answers || 'Default Answers'}
+        </Typography> */}
+        {answerContent}
+        
       </CardContent>
     </Card>
   );
