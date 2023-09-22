@@ -10,6 +10,13 @@ To-Do's
 
 -Start looking into routing ✅
 
+-Created User_Profile ✅
+  -linked 'profile' buttons
+  -API request for user data
+
+-Added Footer with 'home' link and authorization links ✅
+
+
 
 
 - use local storage state
