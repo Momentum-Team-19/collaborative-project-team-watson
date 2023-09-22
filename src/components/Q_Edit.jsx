@@ -2,12 +2,10 @@ import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
 
-const Q_Edit = ({ token, selectedQuestionID }) => {
+const Q_Edit = ({ token, questionID }) => {
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  console.log("selectedQID", selectedQuestionID)
-  console.log("token", token)
   // const [author, setAuthor] = useState("");
 
   const handleEditClick = async (e) => {
@@ -29,7 +27,7 @@ const Q_Edit = ({ token, selectedQuestionID }) => {
 
     try {
       const response = await axios.patch(
-        `https://qb.fly.dev/questions/${selectedQuestionID}`, questionData,
+        `https://qb.fly.dev/questions/${questionID}`, questionData,
         {
           headers: {
             Accept: "application/json",

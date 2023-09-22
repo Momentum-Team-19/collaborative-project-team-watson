@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, TextField, Box } from "@mui/material";
 
-const Q_Delete = ({ token, selectedQuestionID, author }) => {
+const Q_Delete = ({ token, questionID }) => {
+  console.log("Q_Delete questionID:", questionID);
   const handleDeleteClick = async (e) => {
     e.preventDefault();
 
@@ -22,15 +23,14 @@ const Q_Delete = ({ token, selectedQuestionID, author }) => {
     }
   };
 
-  if (author === "username") {
-    return (
-      <Box>
-        <Button variant="contained" color="error" onClick={handleDeleteClick}>
-          Delete Question
-        </Button>
-      </Box>
-    );
-  }
+  return (
+    <Box>
+      <Button variant="contained" color="error" onClick={handleDeleteClick}>
+        Delete Question
+      </Button>
+    </Box>
+  );
+  
 };
 
 export default Q_Delete;

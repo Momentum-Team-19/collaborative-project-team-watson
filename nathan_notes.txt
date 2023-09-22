@@ -6,4 +6,6 @@ Question detail
 
 Questions for Amy
 - Ask about endpoint (search questions needs token)
+- Refresh page when click submit to get updated api request (deleted or editted Q)
+
 
