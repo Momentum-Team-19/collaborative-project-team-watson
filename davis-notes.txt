@@ -19,7 +19,16 @@ To-Do's
 - use local storage state ✅
 
 
+-User Profile: 
+  -user image
+  -user first/last name
+  -user team
+  -phone number
+  -tags for languages known or tech proficient in 
+
 
 - add 'create' button to NavBar as well
+
+- gamification: awards? count how many 'solved' answers you've provided? etc. 
 
 

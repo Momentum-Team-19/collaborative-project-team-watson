@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, createContext, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = ({ setToken, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

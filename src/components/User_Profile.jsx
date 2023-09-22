@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const User_Profile = ({ token, isLoggedIn }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -38,6 +39,9 @@ const User_Profile = ({ token, isLoggedIn }) => {
       <h2>User Profile</h2>
       {userInfo ? <h3>{userInfo.username}</h3> : null}
       {userInfo ? <h4>{userInfo.email}</h4> : null}
+      <Link to={{ pathname: '/profile/edit' }} className='signUpText'>
+        EDIT
+      </Link>
     </>
   );
 };

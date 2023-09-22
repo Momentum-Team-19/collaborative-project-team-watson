@@ -232,7 +232,7 @@ header {
   align-items: center;
 }
 
-.username-label, .email-label {
+.username-label, .email-label, .phone-label, .first-name-label, .last-name-label {
   font-family: "Avant Garde", sans-serif;
   font-size: 1.2em;
   font-weight: 400;
@@ -244,7 +244,20 @@ header {
   margin-left: 38px;
 }
 
-.username-input-box, .email-input-box {
+.phone-label {
+  margin-left: 30px;
+}
+
+.first-name-input, .last-name-input {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.last-name-label {
+  margin-left: 1px;
+}
+
+.username-input-box, .email-input-box, .edit-input-box {
   border: 1px solid var(--clr-break);
   border-radius: 6px;
   padding: 4px;
@@ -253,11 +266,11 @@ header {
   font-size: 1em;
   color: var(--clr-text);
 }
-.username-input-box:hover, .email-input-box:hover {
+.username-input-box:hover, .email-input-box:hover, .edit-input-box:hover {
   border: 1px solid var(--clr-accent);
 }
 
-.email-input {
+.email-input, .password-input, .edit-input {
   margin-top: 5px;
 }
 
