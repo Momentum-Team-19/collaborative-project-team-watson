@@ -5,36 +5,40 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Q_Answer from "./Q_Answer";
+import questions from "./questions";
+
 
 const Q_Detail = ({ token }) => {
   const { questionID } = useParams();
-  const [questionData, setQuestionData] = useState(null);
+  const questionData = questions.find(q => q.id === parseInt(questionID));
+  // const [questionData, setQuestionData] = useState(null);
+  
+  // Commented out to avoid API requests with fly.dev.io down
+  // useEffect(() => {
+  //   // Define an async function
+  //   const fetchQuestionData = async () => {
+  //     try {
+  //       // Make the API call
+  //       const response = await axios.get(
+  //         `https://qb.fly.dev/questions/${questionID}`,
+  //         {
+  //           headers: {
+  //             Accept: "application/json",
+  //             Authorization: `Token ${token}`,
+  //           },
+  //         }
+  //       );
 
-  useEffect(() => {
-    // Define an async function
-    const fetchQuestionData = async () => {
-      try {
-        // Make the API call
-        const response = await axios.get(
-          `https://qb.fly.dev/questions/${questionID}`,
-          {
-            headers: {
-              Accept: "application/json",
-              Authorization: `Token ${token}`,
-            },
-          }
-        );
+  //       // Set the response data to state
+  //       setQuestionData(response.data);
+  //     } catch (error) {
+  //       // Handle the error
+  //       console.error("There was an error fetching data", error);
+  //     }
+  //   };
 
-        // Set the response data to state
-        setQuestionData(response.data);
-      } catch (error) {
-        // Handle the error
-        console.error("There was an error fetching data", error);
-      }
-    };
-
-    fetchQuestionData();
-  }, [token, questionID]);
+  //   fetchQuestionData();
+  // }, [token, questionID]);
 
   if (!questionData) {
     return (
