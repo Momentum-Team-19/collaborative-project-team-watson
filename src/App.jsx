@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import useLocalStorageState from "use-local-storage-state";
@@ -11,16 +12,18 @@ import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
 import questions from "./components/questions";
+import User_Edit from './components/User_Edit';
 // import { fetchData } from './assets/requests';
 
 function App() {
-  const [token, setToken] = useLocalStorageState("userToken", "");
+  const [token, setToken] = useLocalStorageState('userToken', '');
   const [isLoggedIn, setIsLoggedIn] = useLocalStorageState(
-    "userIsLoggedIn",
+    'userIsLoggedIn',
     false
   );
   const [searchResults, setSearchResults] = useState(questions);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   // Commented out to avoid API requests with fly.dev.io down
   // useEffect(() => {
@@ -30,7 +33,7 @@ function App() {
   //       // Make the API call
   //       const response = await axios.get(`https://qb.fly.dev/questions`, {
   //         headers: {
-  //           Accept: "application/json",
+  //           Accept: 'application/json',
   //           Authorization: `Token ${token}`,
   //         },
   //       });
@@ -43,6 +46,7 @@ function App() {
   //     }
   //   };
 
+
   //   fetchSearchResults();
   // }, [token]);
 
@@ -52,22 +56,22 @@ function App() {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
         setToken={setToken}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
-            <>
-              <Q_Feed
-                token={token}
-                searchResults={searchResults}
-                setSelectedQuestion={setSelectedQuestion}
-              />
-            </>
+            <Q_Feed
+              token={token}
+              searchResults={searchResults}
+              setSelectedQuestion={setSelectedQuestion}
+            />
           }
         />
         <Route
-          path="/questions/:questionID"
+          path='/questions/:questionID'
           element={
             <Q_Detail
               token={token}
@@ -78,16 +82,21 @@ function App() {
         />
 
         <Route
-          path="/profile"
+          path='/profile'
           element={<User_Profile token={token} isLoggedIn={isLoggedIn} />}
         />
 
         <Route
-          path="/login"
+          path='/profile/edit'
+          element={<User_Edit isLoggedIn={isLoggedIn} token={token} />}
+        />
+
+        <Route
+          path='/login'
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route
-          path="/register"
+          path='/register'
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }

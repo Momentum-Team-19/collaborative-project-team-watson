@@ -1,6 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
+const NavBar = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  setToken,
+  searchInput,
+  setSearchInput,
+}) => {
   const location = useLocation();
   const { pathname } = location;
 
@@ -23,6 +29,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
             type='text'
             name='Search'
             placeholder='Search...'
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           ></input>
         </div>
         {pathname !== '/login' && pathname !== '/register' ? (
@@ -31,7 +39,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
               <p className='logoutText' onClick={handleLogout}>
                 logout
               </p>
-              <Link to={{ pathname: '/profile' }} className='activeUserLink'>😎</Link>
+              <Link to={{ pathname: '/profile' }} className='activeUserLink'>
+                😎
+              </Link>
             </div>
           ) : (
             <div className='loginContainer'>
