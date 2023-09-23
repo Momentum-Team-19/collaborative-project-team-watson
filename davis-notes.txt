@@ -23,6 +23,7 @@ To-Do's
   -phone number
   -tags for languages known or tech proficient in 
 
+-trigger search on "Enter" key
 
 -User Profile: 
   -user image

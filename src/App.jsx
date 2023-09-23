@@ -54,7 +54,11 @@ function App() {
 
   return (
     <>
-      <NavBar isLoggedIn={isLoggedIn}>
+      <NavBar
+        isLoggedIn={isLoggedIn}
+        setToken={setToken}
+        setIsLoggedIn={setIsLoggedIn}
+      >
         <SearchBar setSearchTerm={setSearchTerm} />
       </NavBar>
       <Routes>
