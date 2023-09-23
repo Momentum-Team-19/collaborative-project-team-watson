@@ -10,6 +10,7 @@ import User_Profile from "./components/User_Profile";
 import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
+import questions from "./components/questions";
 // import { fetchData } from './assets/requests';
 
 function App() {
@@ -18,31 +19,32 @@ function App() {
     "userIsLoggedIn",
     false
   );
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState(questions);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
-  useEffect(() => {
-    // Define an async function
-    const fetchSearchResults = async () => {
-      try {
-        // Make the API call
-        const response = await axios.get(`https://qb.fly.dev/questions`, {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Token ${token}`,
-          },
-        });
+  // Commented out to avoid API requests with fly.dev.io down
+  // useEffect(() => {
+  //   // Define an async function
+  //   const fetchSearchResults = async () => {
+  //     try {
+  //       // Make the API call
+  //       const response = await axios.get(`https://qb.fly.dev/questions`, {
+  //         headers: {
+  //           Accept: "application/json",
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       });
 
-        // Set the response data to state
-        setSearchResults(response.data);
-      } catch (error) {
-        // Handle the error
-        console.error("There was an error fetching data", error);
-      }
-    };
+  //       // Set the response data to state
+  //       setSearchResults(response.data);
+  //     } catch (error) {
+  //       // Handle the error
+  //       console.error("There was an error fetching data", error);
+  //     }
+  //   };
 
-    fetchSearchResults();
-  }, [token]);
+  //   fetchSearchResults();
+  // }, [token]);
 
   return (
     <>
