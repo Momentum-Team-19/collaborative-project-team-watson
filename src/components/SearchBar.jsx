@@ -5,18 +5,22 @@ import { useState } from 'react';
 const SearchBar = ({ setSearchTerm }) => {
   const [searchInput, setSearchInput] = useState('');
 
-  const handleClick = () => {
-
+  const handleSearch = () => {
     const encodedSearchTerm = encodeURIComponent(searchInput);
     setSearchTerm(encodedSearchTerm);
+  };
 
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
     <>
       <div className='searchBar'>
         <div className='iconContainer'>
-          <FaSearch className='searchIcon' onClick={handleClick} />
+          <FaSearch className='searchIcon' onClick={handleSearch} />
         </div>
         <input
           className='searchInput'
@@ -25,6 +29,7 @@ const SearchBar = ({ setSearchTerm }) => {
           placeholder='Search...'
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={handleEnter}
         ></input>
       </div>
     </>

@@ -1,8 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = ({ isLoggedIn, children }) => {
+const NavBar = ({ isLoggedIn, setToken, setIsLoggedIn, children }) => {
   const location = useLocation();
   const { pathname } = location;
+
+  const handleLogout = () => {
+    setToken('');
+    setIsLoggedIn(false);
+  };
 
   return (
     <>
@@ -16,6 +21,9 @@ const NavBar = ({ isLoggedIn, children }) => {
         {pathname !== '/login' && pathname !== '/register' ? (
           isLoggedIn ? (
             <div className='loginContainer'>
+              <p className='logoutText' onClick={handleLogout}>
+                logout
+              </p>
               <Link to={{ pathname: '/profile' }} className='activeUserLink'>
                 😎
               </Link>
