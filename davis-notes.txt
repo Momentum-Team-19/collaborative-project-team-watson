@@ -24,14 +24,14 @@ To-Do's
   -tags for languages known or tech proficient in 
 
 
-
-
 -User Profile: 
   -user image
   -user team number
 
 -search bar functionality
   
+-Pagination for feed/search results
+
 - add 'create' button to NavBar as well
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
