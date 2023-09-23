@@ -21,6 +21,7 @@ function App() {
   );
   const [searchResults, setSearchResults] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     // Define an async function
@@ -51,6 +52,8 @@ function App() {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
         setToken={setToken}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <Routes>
         <Route
