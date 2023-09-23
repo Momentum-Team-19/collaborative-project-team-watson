@@ -19,6 +19,7 @@ const Register = ({ setToken, setIsLoggedIn }) => {
     const loginUrl = 'https://qb.fly.dev/auth/token/login/';
 
     if (password === confirmPassword) {
+      console.log('passwords match');
       axios
         .post(registerUrl, {
           username: username,
@@ -38,6 +39,8 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             navigate('/');
           }
         })
+        
+
         .catch((err) => {
           if (err.response) {
             console.log(err.response.data);
