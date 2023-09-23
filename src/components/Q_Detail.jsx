@@ -5,11 +5,10 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Q_Answer from "./Q_Answer";
-import questions from "./questions";
+import Q_Answer_List from "./Q_Answer_List";
 
 const Q_Detail = ({ token }) => {
   const { questionID } = useParams();
-  // const questionData = questions.find(q => q.id === parseInt(questionID));
   const [questionData, setQuestionData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
@@ -24,7 +23,7 @@ const Q_Detail = ({ token }) => {
           },
         });
         setLoggedInUser(response.data);
-        console.log("response.data", response.data);
+        
       } catch (error) {
         console.error("There was an error fetching logged-in user data", error);
       }
@@ -48,6 +47,7 @@ const Q_Detail = ({ token }) => {
           }
         );
 
+        console.log("response.data questionID", response.data)
         // Set the response data to state
         setQuestionData(response.data);
       } catch (error) {
@@ -90,7 +90,11 @@ const Q_Detail = ({ token }) => {
         </Box>
       </Container>
 
+      <Q_Answer_List answers={questionData.answers} />
+
       <Typography variant="body2">Write an Answer</Typography>
+
+
 
       <Stack spacing={2} direction={"row"}>
         <Q_Answer token={token} questionID={questionID} />
