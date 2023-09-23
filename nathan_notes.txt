@@ -1,8 +1,6 @@
 Nathan To-Do's
 - add map of question answers
-- add conditional rendering for buttons
-- handle other fetching errors
-- stack buttons horizontally
+
 
 Questions for Amy
 - Ask about endpoint (search questions needs token)

@@ -25,7 +25,6 @@ function App() {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Commented out to avoid API requests with fly.dev.io down
   useEffect(() => {
     // Define an async function
     const fetchSearchResults = async () => {
