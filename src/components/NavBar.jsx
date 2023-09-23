@@ -1,19 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import SearchBar from 'components/SearchBar';
 
-const NavBar = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  setToken,
-  searchInput,
-  setSearchInput,
-}) => {
+const NavBar = ({ isLoggedIn, children }) => {
   const location = useLocation();
   const { pathname } = location;
-
-  const handleLogout = () => {
-    setToken('');
-    setIsLoggedIn(false);
-  };
 
   return (
     <>
@@ -23,22 +13,10 @@ const NavBar = ({
             Q!
           </Link>
         </div>
-        <div className='searchContainer'>
-          <input
-            className='searchBar'
-            type='text'
-            name='Search'
-            placeholder='Search...'
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          ></input>
-        </div>
+        <div className='searchContainer'>{children}</div>
         {pathname !== '/login' && pathname !== '/register' ? (
           isLoggedIn ? (
             <div className='loginContainer'>
-              <p className='logoutText' onClick={handleLogout}>
-                logout
-              </p>
               <Link to={{ pathname: '/profile' }} className='activeUserLink'>
                 😎
               </Link>

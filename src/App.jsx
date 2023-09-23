@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import NavBar from 'components/NavBar';
+import SearchBar from 'components/SearchBar';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import Q_Detail from 'components/Q_Detail';
 import Q_Feed from 'components/Q_Feed';
-import User_Profile from './components/User_Profile';
-import Footer from './components/Footer';
+import User_Profile from 'components/User_Profile';
+import Footer from 'components/Footer';
 import axios from 'axios';
 import './App.css';
 // import questions from "./components/questions";
@@ -56,7 +57,9 @@ function App() {
         setToken={setToken}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
-      />
+      >
+        <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
+      </NavBar>
       <Routes>
         <Route
           path='/'
