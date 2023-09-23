@@ -32,7 +32,7 @@ function App() {
       try {
         // Make the API call
         const response = await axios.get(
-          `https://qb.fly.dev/questions?search&${searchTerm}`,
+          `https://qb.fly.dev/questions?search=${searchTerm}`,
           {
             headers: {
               Accept: 'application/json',
