@@ -23,7 +23,7 @@ function App() {
   );
   const [searchResults, setSearchResults] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Commented out to avoid API requests with fly.dev.io down
   useEffect(() => {
@@ -31,12 +31,15 @@ function App() {
     const fetchSearchResults = async () => {
       try {
         // Make the API call
-        const response = await axios.get(`https://qb.fly.dev/questions`, {
-          headers: {
-            Accept: 'application/json',
-            Authorization: `Token ${token}`,
-          },
-        });
+        const response = await axios.get(
+          `https://qb.fly.dev/questions?search${searchTerm}`,
+          {
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
 
         // Set the response data to state
         setSearchResults(response.data);
@@ -47,18 +50,12 @@ function App() {
     };
 
     fetchSearchResults();
-  }, [token]);
+  }, [token, searchTerm]);
 
   return (
     <>
-      <NavBar
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        setToken={setToken}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      >
-        <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
+      <NavBar isLoggedIn={isLoggedIn}>
+        <SearchBar setSearchTerm={setSearchTerm} />
       </NavBar>
       <Routes>
         <Route

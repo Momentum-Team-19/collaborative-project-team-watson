@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import SearchBar from 'components/SearchBar';
 
 const NavBar = ({ isLoggedIn, children }) => {
   const location = useLocation();

@@ -1,12 +1,19 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useState } from 'react';
 
-const SearchBar = ({ searchInput, setSearchInput }) => {
+const SearchBar = ({ setSearchTerm }) => {
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleClick = () => {
+    setSearchTerm(searchInput);
+  };
+
   return (
     <>
       <div className='searchBar'>
         <div className='iconContainer'>
-          <FaSearch className='searchIcon' />
+          <FaSearch className='searchIcon' onClick={handleClick} />
         </div>
         <input
           className='searchInput'
