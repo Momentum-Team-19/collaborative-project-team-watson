@@ -6,8 +6,10 @@ const SearchBar = ({ setSearchTerm }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleClick = () => {
+
     const encodedSearchTerm = encodeURIComponent(searchInput);
     setSearchTerm(encodedSearchTerm);
+
   };
 
   return (
