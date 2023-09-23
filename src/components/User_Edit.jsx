@@ -96,38 +96,6 @@ const User_Edit = ({ isLoggedIn, token }) => {
               }}
             />
           </div>
-          <div className='email-input'>
-            <label htmlFor='email' className='email-label'>
-              Email:{' '}
-            </label>
-            <input
-              className='email-input-box'
-              type='email'
-              name='email'
-              id='email'
-              required
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div className='edit-input'>
-            <label htmlFor='phone' className='phone-label'>
-              Phone:{' '}
-            </label>
-            <input
-              className='edit-input-box'
-              type='phone'
-              name='phone'
-              id='phone'
-              value={phone}
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
-              onFocus={() => setError(null)}
-            />
-          </div>
           <div className='first-name-input'>
             <label htmlFor='first-name' className='first-name-label'>
               First Name:{' '}
@@ -156,6 +124,38 @@ const User_Edit = ({ isLoggedIn, token }) => {
               value={lastName}
               onChange={(e) => {
                 setLastName(e.target.value);
+              }}
+              onFocus={() => setError(null)}
+            />
+          </div>
+          <div className='email-input'>
+            <label htmlFor='email' className='email-label'>
+              Email:{' '}
+            </label>
+            <input
+              className='email-input-box'
+              type='email'
+              name='email'
+              id='email'
+              required
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
+          <div className='edit-input'>
+            <label htmlFor='phone' className='phone-label'>
+              Phone:{' '}
+            </label>
+            <input
+              className='edit-input-box'
+              type='phone'
+              name='phone'
+              id='phone'
+              value={phone}
+              onChange={(e) => {
+                setPhone(e.target.value);
               }}
               onFocus={() => setError(null)}
             />

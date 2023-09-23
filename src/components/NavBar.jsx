@@ -31,7 +31,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
               <p className='logoutText' onClick={handleLogout}>
                 logout
               </p>
-              <Link to={{ pathname: '/profile' }} className='activeUserLink'>😎</Link>
+              <Link to={{ pathname: '/profile' }} className='activeUserLink'>
+                😎
+              </Link>
             </div>
           ) : (
             <div className='loginContainer'>

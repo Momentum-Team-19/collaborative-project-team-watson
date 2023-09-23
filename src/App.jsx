@@ -56,13 +56,11 @@ function App() {
         <Route
           path='/'
           element={
-            <>
-              <Q_Feed
-                token={token}
-                searchResults={searchResults}
-                setSelectedQuestion={setSelectedQuestion}
-              />
-            </>
+            <Q_Feed
+              token={token}
+              searchResults={searchResults}
+              setSelectedQuestion={setSelectedQuestion}
+            />
           }
         />
         <Route
