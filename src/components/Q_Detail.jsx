@@ -7,45 +7,64 @@ import axios from "axios";
 import Q_Answer from "./Q_Answer";
 import questions from "./questions";
 
-
 const Q_Detail = ({ token }) => {
   const { questionID } = useParams();
-  const questionData = questions.find(q => q.id === parseInt(questionID));
-  // const [questionData, setQuestionData] = useState(null);
-  
-  // Commented out to avoid API requests with fly.dev.io down
-  // useEffect(() => {
-  //   // Define an async function
-  //   const fetchQuestionData = async () => {
-  //     try {
-  //       // Make the API call
-  //       const response = await axios.get(
-  //         `https://qb.fly.dev/questions/${questionID}`,
-  //         {
-  //           headers: {
-  //             Accept: "application/json",
-  //             Authorization: `Token ${token}`,
-  //           },
-  //         }
-  //       );
+  // const questionData = questions.find(q => q.id === parseInt(questionID));
+  const [questionData, setQuestionData] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
-  //       // Set the response data to state
-  //       setQuestionData(response.data);
-  //     } catch (error) {
-  //       // Handle the error
-  //       console.error("There was an error fetching data", error);
-  //     }
-  //   };
+  useEffect(() => {
+    // Fetching the logged-in user's data
+    const fetchLoggedInUser = async () => {
+      try {
+        const response = await axios.get(`https://qb.fly.dev/auth/users/me/`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Token ${token}`,
+          },
+        });
+        setLoggedInUser(response.data);
+        console.log("response.data", response.data);
+      } catch (error) {
+        console.error("There was an error fetching logged-in user data", error);
+      }
+    };
 
-  //   fetchQuestionData();
-  // }, [token, questionID]);
+    fetchLoggedInUser();
+  }, [token]);
+
+  useEffect(() => {
+    // Define an async function
+    const fetchQuestionData = async () => {
+      try {
+        // Make the API call
+        const response = await axios.get(
+          `https://qb.fly.dev/questions/${questionID}`,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
+
+        // Set the response data to state
+        setQuestionData(response.data);
+      } catch (error) {
+        // Handle the error
+        console.error("There was an error fetching data", error);
+      }
+    };
+
+    fetchQuestionData();
+  }, [token, questionID]);
 
   if (!questionData) {
     return (
       <>
         <p>Not a valid question ID</p>;
         <Link to="/">
-          <Button variant="contained" style={{ backgroundColor: "lightblue" }}>
+          <Button variant="contained" color="primary">
             Back
           </Button>
         </Link>
@@ -73,15 +92,23 @@ const Q_Detail = ({ token }) => {
 
       <Typography variant="body2">Write an Answer</Typography>
 
+      <Stack spacing={2} direction={"row"}>
+        <Q_Answer token={token} questionID={questionID} />
+
+        {/* Conditionally render Q_Edit and Q_Delete if user is author */}
+        {loggedInUser && loggedInUser.username === questionData.author && (
+          <>
+            <Q_Edit token={token} questionID={questionID} />
+            <Q_Delete token={token} questionID={questionID} />
+          </>
+          )}
+      </Stack>
+      
       <Link to="/">
-        <Button variant="contained" style={{ backgroundColor: "lightblue" }}>
+        <Button variant="contained" color="primary" sx={{ my: 1 }}>
           Back
         </Button>
       </Link>
-
-      <Q_Edit token={token} questionID={questionID} />
-      <Q_Delete token={token} questionID={questionID} />
-      <Q_Answer token={token} questionID={questionID} />
     </>
   );
 };

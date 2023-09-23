@@ -42,6 +42,14 @@ const Q_Box = ({ question, onClick }) => {
         >
           Title: {question.title || 'Default Title'}
         </Typography>
+
+        <Typography
+          style={{ fontSize: "14px", fontStyle: "italic" }}
+          gutterBottom
+        >
+          Author: {question.author || 'Default Title'}
+        </Typography>
+
         <Typography
           style={{
             textOverflow: "ellipsis",

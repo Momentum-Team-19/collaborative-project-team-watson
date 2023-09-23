@@ -7,6 +7,7 @@ const SearchBar = ({ setSearchTerm }) => {
 
   const handleClick = () => {
     setSearchTerm(searchInput);
+    
   };
 
   return (
