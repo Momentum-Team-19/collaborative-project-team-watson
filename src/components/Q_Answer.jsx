@@ -20,7 +20,7 @@ const Q_Answer = ({ token, questionID }) => {
 
     const answerData = {
       text,
-      accepted: true,
+      accepted: false,
     };
 
     try {
