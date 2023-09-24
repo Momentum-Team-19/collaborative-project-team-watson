@@ -3,11 +3,20 @@ import { useState, createContext, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken, setIsLoggedIn }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    username: '',
+    password: '',
+  });
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setForm((prev) => ({
+      ...form,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,10 +24,7 @@ const Login = ({ setToken, setIsLoggedIn }) => {
     const loginUrl = 'https://qb.fly.dev/auth/token/login/';
 
     axios
-      .post(loginUrl, {
-        username: username,
-        password: password,
-      })
+      .post(loginUrl, form)
       .then((res) => {
         if (res.status === 200) {
           setToken(res.data.auth_token);
@@ -30,6 +36,7 @@ const Login = ({ setToken, setIsLoggedIn }) => {
         console.log(err.response.data.non_field_errors[0]);
         setError(err.response.data.non_field_errors[0]);
       });
+    console.log('form ', form);
   };
 
   return (
@@ -45,10 +52,8 @@ const Login = ({ setToken, setIsLoggedIn }) => {
             name='username'
             id='username'
             required
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            value={form.username}
+            onChange={handleChange}
             onFocus={() => setError(null)}
           />
         </div>
@@ -62,10 +67,8 @@ const Login = ({ setToken, setIsLoggedIn }) => {
             name='password'
             id='password'
             required
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            value={form.password}
+            onChange={handleChange}
             onFocus={() => setError(null)}
           />
         </div>
