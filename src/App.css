@@ -12,7 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   --clr-light: #ffffff;
-  --clr-dark: #323232;
+  --clr-dark: #676767;
   --clr-break: #d6d7db;
   --clr-accent: #23b8dd;
   --clr-text: #898989;
@@ -70,12 +70,6 @@ header {
   align-items: center;
 }
 
-input {
-  background-color: transparent;
-  height: 100%;
-  width: 100%;
-}
-
 #root {
   margin: 0 auto;
   width: 100%;
@@ -113,7 +107,7 @@ input {
   justify-content: center;
   align-items: center;
   margin-right: 100px;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 
 .searchBar {
@@ -309,10 +303,13 @@ input {
   padding-top: 5px;
   font-family: "Avant Garde", sans-serif;
   font-size: 1em;
-  color: var(--clr-text);
+  color: var(--clr-accent);
 }
 .username-input-box:hover, .email-input-box:hover, .edit-input-box:hover {
   border: 1px solid var(--clr-accent);
+}
+.username-input-box::placeholder, .email-input-box::placeholder, .edit-input-box::placeholder {
+  color: var(--clr-text);
 }
 
 .email-input, .password-input, .edit-input {
@@ -446,4 +443,77 @@ input {
   line-height: .8;
   color: var(--clr-text);
   margin: 5px;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border: 1px solid var(--clr-break);
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.profileInfo {
+  margin: 5px 5px 5px 5px;
+  color: var(--clr-dark);
+}
+
+.profileInfoContainer {
+  margin: 10px;
+}
+
+.editButton {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  line-height: .8;
+  color: var(--clr-light);
+  border: 1px solid var(--clr-accent);
+  background-color: var(--clr-accent);
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 72px;
+  height: 25px;
+  margin: 15px;
+  text-align: start;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.editButton:active {
+  transform: scale(95%);
+  transition: transform 0.2s;
+}
+
+.userQuestionsContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  border: 1px solid var(--clr-break);
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
+  padding-bottom: 10px;
+}
+
+.recentActivityText {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: .8;
+  color: var(--clr-dark);
+}
+
+.qBoxes {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
