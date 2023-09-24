@@ -172,7 +172,7 @@ header {
   justify-content: right;
   align-items: center;
   position: absolute;
-  right: 0px;
+  right: 5px;
 }
 
 .signInText, .logoutText {
@@ -463,7 +463,7 @@ header {
 
 .userImgContainer {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
   border: 1px solid var(--clr-text);
   background-color: var(--clr-break);
