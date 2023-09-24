@@ -16,7 +16,6 @@ const Q_Answer = ({ token, questionID }) => {
 
   const handleSubmitClick = async (e) => {
     e.preventDefault();
-    console.log("Q_Answer handleSubmitClick questionID:", questionID);
 
     const answerData = {
       text,
