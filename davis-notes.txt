@@ -36,3 +36,10 @@ To-Do's
 - add 'create' button to NavBar as well
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
+
+-notifications:
+  -if someone answers your question ?
+
+
+-when creating question/answer, page ins't showing new question/answer until reload
+  -answer sholdn't cut off in elipsis after 1 line 
