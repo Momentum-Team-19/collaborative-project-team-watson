@@ -453,11 +453,33 @@ header {
   border-radius: 10px;
   margin-top: 30px;
   margin-left: 30px;
+  position: relative;
 }
 
 .profileInfo {
   margin: 5px 5px 5px 5px;
   color: var(--clr-dark);
+}
+
+.userImgContainer {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border: 1px solid var(--clr-text);
+  background-color: var(--clr-break);
+  border-radius: 50%;
+  padding: 5px;
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100px; */
+}
+
+.userImg {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0px;
 }
 
 .profileInfoContainer {
