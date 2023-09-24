@@ -1,9 +1,16 @@
 Nathan To-Do's
-- add map of question answers
+- use author id and user id (or ensure unique usernames)
+- 
 
 
 Questions for Amy
 - Ask about endpoint (search questions needs token)
 - Refresh page when click submit to get updated api request (deleted or editted Q)
+
+Ideas
+- "Ments" / "Moments" - points for getting upvotes or favorites answers
+- posts for good questions
+- Mentee and Mentor points?
+
 
 
