@@ -23,13 +23,14 @@ To-Do's
   -phone number
   -tags for languages known or tech proficient in 
 
--trigger search on "Enter" key
+-trigger search on "Enter" key ✅
+
+-search bar functionality ✅
+
 
 -User Profile: 
   -user image
   -user team number
-
--search bar functionality
   
 -Pagination for feed/search results
 

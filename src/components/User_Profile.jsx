@@ -93,11 +93,8 @@ const User_Profile = ({ token, isLoggedIn }) => {
             <p className='recentActivityText'>Answers</p>
             <div className='qBoxes'>
               {answersInfo &&
-                answersInfo.map((answer) => (
-                  <Link
-                    to={`/questions/${answer.question}`}
-                    key={answer.question}
-                  >
+                answersInfo.map((answer, index) => (
+                  <Link to={`/questions/${answer.question}`} key={index}>
                     <Q_Answer_Box answer={answer} />
                   </Link>
                 ))}
