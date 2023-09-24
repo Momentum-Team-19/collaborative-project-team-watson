@@ -93,7 +93,9 @@ const User_Edit = ({ isLoggedIn, token }) => {
             <input
               className='username-input-box'
               type='text'
+              id='username'
               name='username'
+              autoComplete='username'
               required
               value={form.username}
               onChange={handleChange}
@@ -101,26 +103,30 @@ const User_Edit = ({ isLoggedIn, token }) => {
             />
           </div>
           <div className='first-name-input'>
-            <label htmlFor='first-name' className='first-name-label'>
+            <label htmlFor='first_name' className='first-name-label'>
               First Name:{' '}
             </label>
             <input
               className='edit-input-box'
               type='text'
+              id='first_name'
               name='first_name'
+              autoComplete='given-name'
               value={form.first_name}
               onChange={handleChange}
               onFocus={() => setError(null)}
             />
           </div>
           <div className='last-name-input'>
-            <label htmlFor='last-name' className='last-name-label'>
+            <label htmlFor='last_name' className='last-name-label'>
               Last Name:{' '}
             </label>
             <input
               className='edit-input-box'
               type='text'
+              id='last_name'
               name='last_name'
+              autoComplete='family-name'
               value={form.last_name}
               onChange={handleChange}
               onFocus={() => setError(null)}
@@ -133,7 +139,9 @@ const User_Edit = ({ isLoggedIn, token }) => {
             <input
               className='email-input-box'
               type='text'
+              id='email'
               name='email'
+              autoComplete='email'
               required
               value={form.email}
               onChange={handleChange}
@@ -146,7 +154,9 @@ const User_Edit = ({ isLoggedIn, token }) => {
             <input
               className='edit-input-box'
               type='text'
+              id='phone'
               name='phone'
+              autoComplete='tel'
               placeholder=''
               value={form.phone}
               onChange={handleChange}
