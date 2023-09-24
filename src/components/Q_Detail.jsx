@@ -91,11 +91,7 @@ const Q_Detail = ({ token }) => {
         </Box>
       </Container>
 
-      <Q_Answer_List token={token} answers={questionData.answers} />
-
-      <Typography variant="body2">Write an Answer</Typography>
-
-
+      <Q_Answer_List token={token} answers={questionData.answers} loggedInUser={loggedInUser}/>
 
       <Stack spacing={2} direction={"row"}>
         <Q_Answer token={token} questionID={questionID} />
