@@ -2,10 +2,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Q_Box from 'components/Q_Box';
+import Q_Answer_Box from 'components/Q_Answer_Box';
 
 const User_Profile = ({ token, isLoggedIn }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [questionInfo, setQuestionInfo] = useState([]);
+  const [answersInfo, setAnswersInfo] = useState([]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -29,6 +31,14 @@ const User_Profile = ({ token, isLoggedIn }) => {
               },
             });
             setQuestionInfo(questionInfoResponse.data);
+            const answerInfoUrl = 'https://qb.fly.dev/answers/me';
+            const answerInfoResponse = await axios.get(answerInfoUrl, {
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Token ${token}`,
+              },
+            });
+            setAnswersInfo(answerInfoResponse.data);
           } catch (error) {
             console.error('There was an error fetching data', error);
           }
@@ -71,6 +81,13 @@ const User_Profile = ({ token, isLoggedIn }) => {
                   <Q_Box question={question} />
                 </Link>
               ))}
+          </div>
+        </div>
+        <div className='userQuestionsContainer'>
+          <p className='recentActivityText'>Answers:</p>
+          <div className='qBoxes'>
+            {answersInfo &&
+              answersInfo.map((answer) => <Q_Answer_Box answer={answer} />)}
           </div>
         </div>
       </>
