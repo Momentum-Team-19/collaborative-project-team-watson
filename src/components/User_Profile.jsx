@@ -55,6 +55,9 @@ const User_Profile = ({ token, isLoggedIn }) => {
             <h5 className='profileInfo'>Phone: {userInfo.phone || 'N/A'}</h5>
             <h5 className='profileInfo'>Email: {userInfo.email || 'N/A'}</h5>
           </div>
+          <div className='userImgContainer'>
+            <p className='userImg'>😎</p>
+          </div>
           <Link to={{ pathname: '/profile/edit' }} className='editButton'>
             EDIT
           </Link>
