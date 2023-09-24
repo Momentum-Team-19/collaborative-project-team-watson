@@ -9,6 +9,9 @@ const User_Profile = ({ token, isLoggedIn }) => {
   const [questionInfo, setQuestionInfo] = useState([]);
   const [answersInfo, setAnswersInfo] = useState([]);
 
+  const isQuestions = questionInfo.length > 0;
+  const isAnswers = answersInfo.length > 0;
+
   useEffect(() => {
     if (isLoggedIn) {
       console.log(isLoggedIn);
@@ -72,31 +75,35 @@ const User_Profile = ({ token, isLoggedIn }) => {
             EDIT
           </Link>
         </div>
-        <div className='userQuestionsContainer'>
-          <p className='recentActivityText'>Questions:</p>
-          <div className='qBoxes'>
-            {questionInfo &&
-              questionInfo.map((question) => (
-                <Link to={`/questions/${question.id}`} key={question.id}>
-                  <Q_Box question={question} />
-                </Link>
-              ))}
+        {isQuestions ? (
+          <div className='userQuestionsContainer'>
+            <p className='recentActivityText'>Questions</p>
+            <div className='qBoxes'>
+              {questionInfo &&
+                questionInfo.map((question) => (
+                  <Link to={`/questions/${question.id}`} key={question.id}>
+                    <Q_Box question={question} />
+                  </Link>
+                ))}
+            </div>
           </div>
-        </div>
-        <div className='userQuestionsContainer'>
-          <p className='recentActivityText'>Answers:</p>
-          <div className='qBoxes'>
-            {answersInfo &&
-              answersInfo.map((answer) => (
-                <Link
-                  to={`/questions/${answer.question}`}
-                  key={answer.question}
-                >
-                  <Q_Answer_Box answer={answer} />
-                </Link>
-              ))}
+        ) : null}
+        {isAnswers ? (
+          <div className='userQuestionsContainer'>
+            <p className='recentActivityText'>Answers</p>
+            <div className='qBoxes'>
+              {answersInfo &&
+                answersInfo.map((answer) => (
+                  <Link
+                    to={`/questions/${answer.question}`}
+                    key={answer.question}
+                  >
+                    <Q_Answer_Box answer={answer} />
+                  </Link>
+                ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </>
     );
   } else {
