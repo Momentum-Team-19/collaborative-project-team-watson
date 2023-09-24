@@ -73,7 +73,7 @@ const User_Profile = ({ token, isLoggedIn }) => {
           </Link>
         </div>
         <div className='userQuestionsContainer'>
-          <p className='recentActivityText'>Questions:</p>
+          <p className='recentActivityText'>Questions</p>
           <div className='qBoxes'>
             {questionInfo &&
               questionInfo.map((question) => (
@@ -84,7 +84,7 @@ const User_Profile = ({ token, isLoggedIn }) => {
           </div>
         </div>
         <div className='userQuestionsContainer'>
-          <p className='recentActivityText'>Answers:</p>
+          <p className='recentActivityText'>Answers</p>
           <div className='qBoxes'>
             {answersInfo &&
               answersInfo.map((answer) => (
