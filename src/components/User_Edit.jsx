@@ -152,6 +152,7 @@ const User_Edit = ({ isLoggedIn, token }) => {
               className='edit-input-box'
               type='phone'
               name='phone'
+              placeholder=''
               id='phone'
               value={phone}
               onChange={(e) => {
@@ -162,7 +163,7 @@ const User_Edit = ({ isLoggedIn, token }) => {
           </div>
           {error && <div className='error-message'>{error}</div>}
           <div className='login-button-container'>
-            <input type='submit' value='Register' className='login-button' />
+            <input type='submit' value='Update' className='login-button' />
           </div>
         </form>
       </div>
