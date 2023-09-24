@@ -11,6 +11,7 @@ const Q_Detail = ({ token }) => {
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  
 
   useEffect(() => {
     // Fetching the logged-in user's data
@@ -47,7 +48,7 @@ const Q_Detail = ({ token }) => {
           }
         );
 
-        console.log("response.data questionID", response.data)
+        
         // Set the response data to state
         setQuestionData(response.data);
       } catch (error) {
@@ -90,7 +91,7 @@ const Q_Detail = ({ token }) => {
         </Box>
       </Container>
 
-      <Q_Answer_List answers={questionData.answers} />
+      <Q_Answer_List token={token} answers={questionData.answers} />
 
       <Typography variant="body2">Write an Answer</Typography>
 
