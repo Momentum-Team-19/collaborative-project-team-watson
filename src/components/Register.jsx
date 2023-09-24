@@ -3,13 +3,22 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Register = ({ setToken, setIsLoggedIn }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [form, setForm] = useState({
+    username: '',
+    password: '',
+    email: '',
+  });
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setForm((prev) => ({
+      ...form,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,18 +27,14 @@ const Register = ({ setToken, setIsLoggedIn }) => {
 
     const loginUrl = 'https://qb.fly.dev/auth/token/login/';
 
-    if (password === confirmPassword) {
+    if (form.password === confirmPassword) {
       console.log('passwords match');
       axios
-        .post(registerUrl, {
-          username: username,
-          password: password,
-          email: email,
-        })
+        .post(registerUrl, form)
         .then(() => {
           return axios.post(loginUrl, {
-            username: username,
-            password: password,
+            username: form.username,
+            password: form.password,
           });
         })
         .then((res) => {
@@ -39,7 +44,6 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             navigate('/');
           }
         })
-        
 
         .catch((err) => {
           if (err.response) {
@@ -71,10 +75,8 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             name='username'
             id='username'
             required
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            value={form.username}
+            onChange={handleChange}
           />
         </div>
         <div className='email-input'>
@@ -87,10 +89,8 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             name='email'
             id='email'
             required
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            value={form.email}
+            onChange={handleChange}
           />
         </div>
         <div className='password-input'>
@@ -103,10 +103,8 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             name='password'
             id='password'
             required
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            value={form.password}
+            onChange={handleChange}
             onFocus={() => setError(null)}
           />
         </div>

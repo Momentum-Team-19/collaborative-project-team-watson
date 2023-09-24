@@ -4,14 +4,23 @@ import { useNavigate } from 'react-router-dom';
 
 const User_Edit = ({ isLoggedIn, token }) => {
   const [id, setId] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [form, setForm] = useState({
+    username: '',
+    email: '',
+    phone: '',
+    first_name: '',
+    last_name: '',
+  });
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setForm((prev) => ({
+      ...form,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -24,23 +33,21 @@ const User_Edit = ({ isLoggedIn, token }) => {
               Authorization: `Token ${token}`,
             },
           });
-          console.log(response.data);
-
           setId(response.data.id);
-          setUsername(response.data.username);
-          setEmail(response.data.email);
-          setPhone(response.data.phone);
-          setFirstName(response.data.first_name);
-          setLastName(response.data.last_name);
+          setForm({
+            username: response.data.username,
+            email: response.data.email,
+            phone: response.data.phone,
+            first_name: response.data.first_name,
+            last_name: response.data.last_name,
+          });
         } catch (error) {
           console.error('There was an error fetching data', error);
         }
       } else {
-        setUserInfo(null);
+        setForm(null);
       }
     };
-
-    console.log('isLoggedIn: ', isLoggedIn);
 
     fetchUserInfo();
   }, [token, isLoggedIn]);
@@ -48,15 +55,14 @@ const User_Edit = ({ isLoggedIn, token }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const editUserUrl = `https://qb.fly.dev/auth/users/${id}`;
-
+    const editUserUrl = `https://qb.fly.dev/auth/users/${id}/`;
+    console.log('form, ', form);
     axios
-      .patch(editUserUrl, {
-        username: username,
-        email: email,
-        phone: phone,
-        first_name: firstName,
-        last_name: lastName,
+      .patch(editUserUrl, form, {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Token ${token}`,
+        },
       })
       .then((res) => {
         console.log(res);
@@ -65,13 +71,13 @@ const User_Edit = ({ isLoggedIn, token }) => {
       .catch((err) => {
         if (err.response) {
           console.log(err.response.data);
-          setError(err.response.data);
+          // setError(err.response.data);
         } else if (err.request) {
           console.log(err.request);
           setError('Network error');
         } else {
           console.log(err.message);
-          setError(err.message);
+          // setError(err.message);
         }
       });
   };
@@ -88,12 +94,10 @@ const User_Edit = ({ isLoggedIn, token }) => {
               className='username-input-box'
               type='text'
               name='username'
-              id='username'
               required
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
+              value={form.username}
+              onChange={handleChange}
+              onFocus={() => setError(null)}
             />
           </div>
           <div className='first-name-input'>
@@ -102,13 +106,10 @@ const User_Edit = ({ isLoggedIn, token }) => {
             </label>
             <input
               className='edit-input-box'
-              type='first-name'
-              name='first-name'
-              id='first-name'
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
+              type='text'
+              name='first_name'
+              value={form.first_name}
+              onChange={handleChange}
               onFocus={() => setError(null)}
             />
           </div>
@@ -118,13 +119,10 @@ const User_Edit = ({ isLoggedIn, token }) => {
             </label>
             <input
               className='edit-input-box'
-              type='last-name'
-              name='last-name'
-              id='last-name'
-              value={lastName}
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
+              type='text'
+              name='last_name'
+              value={form.last_name}
+              onChange={handleChange}
               onFocus={() => setError(null)}
             />
           </div>
@@ -134,14 +132,11 @@ const User_Edit = ({ isLoggedIn, token }) => {
             </label>
             <input
               className='email-input-box'
-              type='email'
+              type='text'
               name='email'
-              id='email'
               required
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              value={form.email}
+              onChange={handleChange}
             />
           </div>
           <div className='edit-input'>
@@ -150,14 +145,11 @@ const User_Edit = ({ isLoggedIn, token }) => {
             </label>
             <input
               className='edit-input-box'
-              type='phone'
+              type='text'
               name='phone'
               placeholder=''
-              id='phone'
-              value={phone}
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
+              value={form.phone}
+              onChange={handleChange}
               onFocus={() => setError(null)}
             />
           </div>
