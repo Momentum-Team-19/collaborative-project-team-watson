@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"; // Added useState
-import axios from "axios"; // Assuming you're using axios
 import { Card, CardContent, Typography } from "@mui/material";
 import Q_Answer_Accepted from "./Q_Answer_Accepted";
 
@@ -7,9 +6,12 @@ const Q_Answer_Box = ({ answer, token, loggedInUser }) => {
   // Assuming token is passed as prop
   const [currentAnswer, setCurrentAnswer] = useState(answer);
 
-  const handleAnswerAccepted = (updatedAnswer) => {
-    setCurrentAnswer(updatedAnswer);
-  };
+  const handleAnswerAccepted = (updatedAcceptedState) => {
+    setCurrentAnswer({
+        ...currentAnswer,
+        accepted: updatedAcceptedState
+    });
+};
 
   return (
     <Card

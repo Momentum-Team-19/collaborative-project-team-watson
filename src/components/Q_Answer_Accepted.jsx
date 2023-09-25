@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Q_Answer_Accepted = ({ token, answer, loggedInUser }) => {
-    const [answerAccepted, setAnswerAccepted] = useState(answer.accepted);
+const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) => {
     const [questionData, setQuestionData] = useState(null);
+    console.log(answer.accepted)
 
-    console.log("Q_Answer_Accepted before", answer.id, answerAccepted);
+    
 
     const handleAnswerAccepted = async (e) => {
-        console.log("handleAnswerAccepted");
-        const updatedAcceptedState = !answerAccepted;  // Toggle the current state
+        
+        const updatedAcceptedState = !answer.accepted;  // Toggle the current state
 
         try {
-            const response = await axios.put(
+            const response = await axios.patch(
                 `https://qb.fly.dev/answers/${answer.id}/accept`,
                 { accepted: updatedAcceptedState },  // Update with the new state
                 {
@@ -24,9 +24,10 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser }) => {
             );
             
 
-            // After successful update, set the new state
-            console.log("Q_Answer_Accepted after", answer.id, updatedAcceptedState);
-            setAnswerAccepted(updatedAcceptedState);
+            if (response.status === 200) {
+                onToggleAccepted(updatedAcceptedState);
+            }
+
             
         } catch (error) {
             console.error("There was an error toggling the accepted status of the answer", error);

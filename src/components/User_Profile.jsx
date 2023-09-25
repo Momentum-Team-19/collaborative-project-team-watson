@@ -27,7 +27,6 @@ const User_Profile = ({ token, isLoggedIn }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log(isLoggedIn);
       const fetchUserInfo = async () => {
         if (isLoggedIn) {
           try {
@@ -62,8 +61,6 @@ const User_Profile = ({ token, isLoggedIn }) => {
           setUserInfo(null);
         }
       };
-
-      console.log(isLoggedIn);
 
       fetchUserInfo();
     }

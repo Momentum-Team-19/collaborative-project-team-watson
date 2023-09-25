@@ -1,6 +1,15 @@
 Nathan To-Do's
+- Bug - for edit answer accept on profile page
+- Bug - unaccepting answer
+- Bug - home page without logging in (similar backend changes)
+    - Question Detail
+- Bug - editting profile info
 - use author id and user id (or ensure unique usernames)
-- 
+- back button (need to be updated or changes to question feed)
+- Create question page
+- use spread operator to update page
+
+- Big task 
 
 
 Questions for Amy

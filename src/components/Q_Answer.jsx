@@ -32,7 +32,6 @@ const Q_Answer = ({ token, questionID }) => {
           },
         }
       );
-      console.log("Q_Answer handleSubmitClick response:", response);
       // Hide the form and reset fields
       setShowForm(false);
       setText("");
