@@ -61,46 +61,48 @@ const User_Profile = ({ token, isLoggedIn }) => {
       <>
         <div className='profileContainer'>
           <div className='profileInfoContainer'>
-            <h2 className='profileInfo'>Username: {userInfo.username}</h2>
-            <h4 className='profileInfo'>
-              Name: {userInfo.first_name || 'N/A'} {userInfo.last_name}
-            </h4>
-            <h5 className='profileInfo'>Phone: {userInfo.phone || 'N/A'}</h5>
-            <h5 className='profileInfo'>Email: {userInfo.email || 'N/A'}</h5>
+            <div className='profileInfoBox'>
+              <h2 className='profileInfo'>Username: {userInfo.username}</h2>
+              <h4 className='profileInfo'>
+                Name: {userInfo.first_name || 'N/A'} {userInfo.last_name}
+              </h4>
+              <h5 className='profileInfo'>Phone: {userInfo.phone || 'N/A'}</h5>
+              <h5 className='profileInfo'>Email: {userInfo.email || 'N/A'}</h5>
+            </div>
+            <div className='userImgContainer'>
+              <p className='userImg'>😎</p>
+            </div>
+            <Link to={{ pathname: '/profile/edit' }} className='editButton'>
+              EDIT
+            </Link>
           </div>
-          <div className='userImgContainer'>
-            <p className='userImg'>😎</p>
-          </div>
-          <Link to={{ pathname: '/profile/edit' }} className='editButton'>
-            EDIT
-          </Link>
+          {isQuestions ? (
+            <div className='userQuestionsContainer'>
+              <p className='recentActivityText'>Questions</p>
+              <div className='qBoxes'>
+                {questionInfo &&
+                  questionInfo.map((question) => (
+                    <Link to={`/questions/${question.id}`} key={question.id}>
+                      <Q_Box question={question} />
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          ) : null}
+          {isAnswers ? (
+            <div className='userQuestionsContainer'>
+              <p className='recentActivityText'>Answers</p>
+              <div className='qBoxes'>
+                {answersInfo &&
+                  answersInfo.map((answer, index) => (
+                    <Link to={`/questions/${answer.question}`} key={index}>
+                      <Q_Answer_Box answer={answer} />
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          ) : null}
         </div>
-        {isQuestions ? (
-          <div className='userQuestionsContainer'>
-            <p className='recentActivityText'>Questions</p>
-            <div className='qBoxes'>
-              {questionInfo &&
-                questionInfo.map((question) => (
-                  <Link to={`/questions/${question.id}`} key={question.id}>
-                    <Q_Box question={question} />
-                  </Link>
-                ))}
-            </div>
-          </div>
-        ) : null}
-        {isAnswers ? (
-          <div className='userQuestionsContainer'>
-            <p className='recentActivityText'>Answers</p>
-            <div className='qBoxes'>
-              {answersInfo &&
-                answersInfo.map((answer, index) => (
-                  <Link to={`/questions/${answer.question}`} key={index}>
-                    <Q_Answer_Box answer={answer} />
-                  </Link>
-                ))}
-            </div>
-          </div>
-        ) : null}
       </>
     );
   } else {
