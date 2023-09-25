@@ -18,6 +18,9 @@ const NavBar = ({ isLoggedIn, setToken, setIsLoggedIn, children }) => {
           </Link>
         </div>
         <div className='searchContainer'>{children}</div>
+        <div className='addContainer'>
+          <p className='addButton'>+</p>
+        </div>
         {pathname !== '/login' && pathname !== '/register' ? (
           isLoggedIn ? (
             <div className='loginContainer'>

@@ -109,8 +109,30 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 100px;
+  margin-right: 40px;
   margin-left: 60px;
+}
+
+@media (max-width: 700px) {
+  .searchContainer {
+    width: 40%;
+    margin-right: 20px;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .searchContainer {
+    width: 35%;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .searchContainer {
+    width: 30%;
+    margin-right: 5px;
+  }
 }
 
 .searchBar {
@@ -168,6 +190,36 @@ header {
 }
 .searchBar:hover .searchInput::placeholder {
   color: var(--clr-accent);
+}
+
+.addContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border: 1px solid var(--clr-accent);
+  background-color: var(--clr-light);
+  border-radius: 8px;
+  height: 50%;
+  cursor: pointer; 
+  padding: 0px 5px 1px 5px;
+}
+.addContainer:hover {
+  background-color: var(--clr-accent);
+}
+.addContainer:active {
+  transform: scale(90%);
+  transition: transform 0.2s;
+}
+
+.addButton {
+  font-size: 1.8rem;
+  color: var(--clr-accent);
+  text-align: center;
+  padding-bottom: 3px;
+}
+.addContainer:hover .addButton {
+  color: var(--clr-light);
 }
 
 .loginContainer {
