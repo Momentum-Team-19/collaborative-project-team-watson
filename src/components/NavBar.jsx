@@ -1,8 +1,19 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = ({ isLoggedIn, setToken, setIsLoggedIn, children }) => {
+const NavBar = ({
+  isLoggedIn,
+  setToken,
+  setIsLoggedIn,
+  isDarkMode,
+  setIsDarkMode,
+  children,
+}) => {
   const location = useLocation();
   const { pathname } = location;
+
+  const handleDark = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const handleLogout = () => {
     setToken('');
@@ -20,6 +31,12 @@ const NavBar = ({ isLoggedIn, setToken, setIsLoggedIn, children }) => {
         <div className='searchContainer'>{children}</div>
         <div className='addContainer'>
           <p className='addButton'>+</p>
+        </div>
+        <div className='darkToggle'>
+          <p
+            className={isDarkMode ? 'darkInput' : 'lightInput'}
+            onClick={handleDark}
+          ></p>
         </div>
         {pathname !== '/login' && pathname !== '/register' ? (
           isLoggedIn ? (
