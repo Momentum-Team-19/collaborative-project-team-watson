@@ -92,7 +92,7 @@ header {
 #root {
   margin: 0 auto;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--clr-light);
 }
 
@@ -735,4 +735,73 @@ header {
   justify-content: center;
   flex-direction: column;
   width: 100%;
+}
+
+.qFeedContainer {
+  margin-top: 20px;
+}
+
+.paginationControlsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.prevContainer {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+}
+
+.nextContainer {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+}
+
+.prevButton, .nextButton, .disabledPrev, .disabledNext {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  line-height: .8;
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 72px;
+  height: 25px;
+  margin: 0;
+  text-align: start;
+  margin-right: 15px;
+}
+.prevButton, .nextButton {
+  color: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  background-color: var(--clr-light);
+  cursor: pointer;
+}
+.disabledPrev, .disabledNext {
+  color: var(--clr-text);
+  border: 1px solid var(--clr-break);
+  background-color: var(--clr-light);
+  cursor: not-allowed;
+}
+
+.prevButton, .disabledPrev {
+  margin-left: 60px;
+}
+.nextButton, .disabledNext {
+  margin-right: 60px;
+}
+.prevButton:hover, .nextButton:hover {
+  color: var(--clr-light);
+  background-color: var(--clr-accent);
+}
+.prevButton:active, .nextButton:active {
+  transform: scale(95%);
+  transition: transform 0.2s;
 }
