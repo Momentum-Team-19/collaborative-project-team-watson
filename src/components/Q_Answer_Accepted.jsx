@@ -3,14 +3,14 @@ import axios from "axios";
 
 const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) => {
     const [questionData, setQuestionData] = useState(null);
-    console.log(answer.accepted)
-
-    
+    console.log('answer accepted', answer.accepted)
+    console.log(token)
+    console.log(answer)
 
     const handleAnswerAccepted = async (e) => {
         
         const updatedAcceptedState = !answer.accepted;  // Toggle the current state
-
+        
         try {
             const response = await axios.patch(
                 `https://qb.fly.dev/answers/${answer.id}/accept`,
@@ -22,7 +22,7 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) =>
                     },
                 }
             );
-            
+            console.log('response', response)
 
             if (response.status === 200) {
                 onToggleAccepted(updatedAcceptedState);
@@ -36,6 +36,7 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) =>
 
     useEffect(() => {
         // Define an async function
+        
         const fetchQuestionData = async () => {
           try {
             // Make the API call
@@ -73,9 +74,9 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) =>
     return (
         <div>
 
-            {loggedInUser && loggedInUser.username === questionData.author && (
+            {loggedInUser && loggedInUser.username === questionData.author.username && (
                 <button onClick={handleAnswerAccepted}>
-                    {answerAccepted ? "Unaccept Answer" : "Accept Answer"}
+                    {answer.accepted ? "Unaccept Answer" : "Accept Answer"}
                 </button>
             )}
         </div>

@@ -29,7 +29,7 @@ const Q_Answer_Box = ({ answer, token, loggedInUser }) => {
           style={{ fontSize: "14px", fontStyle: "italic" }}
           gutterBottom
         >
-          Author: {answer.author || "Anonymous"}
+          Author: {answer.author.username || "Anonymous"}
         </Typography>
 
         <Typography

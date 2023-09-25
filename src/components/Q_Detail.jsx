@@ -12,6 +12,7 @@ const Q_Detail = ({ token }) => {
   const [questionData, setQuestionData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
   
+  
 
   useEffect(() => {
     // Fetching the logged-in user's data
@@ -78,7 +79,7 @@ const Q_Detail = ({ token }) => {
       <Box textAlign="left">
         <Typography variant="h4">{questionData.title}</Typography>
         <Typography variant="h5">
-          Author: {questionData.author || "N/A"}
+          Author: {questionData.author.username || "N/A"}
         </Typography>
       </Box>
 
@@ -97,7 +98,7 @@ const Q_Detail = ({ token }) => {
         <Q_Answer token={token} questionID={questionID} />
 
         {/* Conditionally render Q_Edit and Q_Delete if user is author */}
-        {loggedInUser && loggedInUser.username === questionData.author && (
+        {loggedInUser && loggedInUser.username === questionData.author.username && (
           <>
             <Q_Edit token={token} questionID={questionID} />
             <Q_Delete token={token} questionID={questionID} />

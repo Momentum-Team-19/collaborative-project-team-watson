@@ -3,6 +3,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 
 const Q_Box = ({ question, onClick }) => {
 
+
   let topAnswer = ''
   if (question.answers) {
     if (question.answers.length > 0) {
@@ -43,11 +44,11 @@ const Q_Box = ({ question, onClick }) => {
           Title: {question.title || 'Default Title'}
         </Typography>
 
-        <Typography
-          style={{ fontSize: "14px", fontStyle: "italic" }}
+        <Typography style={{ fontSize: "14px", fontStyle: "italic" }}
           gutterBottom
+          
         >
-          Author: {question.author || 'Default Title'}
+          Author: {question.author.username || 'Default Title'}
         </Typography>
 
         <Typography
@@ -59,7 +60,7 @@ const Q_Box = ({ question, onClick }) => {
             marginBottom: "8px",
           }}
         >
-          Body: {question.body}
+          Body: {question.body || 'Default Body'}
         </Typography>
         {/* style={{ fontSize: "12px", color: "#666" }} */}
         {/* <Typography >
