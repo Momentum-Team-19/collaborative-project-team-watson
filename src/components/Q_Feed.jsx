@@ -24,10 +24,6 @@ const Q_Feed = ({ token, searchResults, itemsPerPage }) => {
     navigate(`/page/${parseInt(page) - 1}`);
   };
 
-  console.log(`page: ${page}`);
-  console.log(`firstPage: ${firstPage}`);
-  console.log(`lastPage: ${lastPage}`);
-
   if (Array.isArray(paginateData())) {
     return (
       <>

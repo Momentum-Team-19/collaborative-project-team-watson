@@ -80,7 +80,7 @@ const User_Edit = ({ isLoggedIn, token }) => {
     e.preventDefault();
 
     const editUserUrl = `https://qb.fly.dev/auth/users/${id}/`;
-    console.log('form, ', form);
+    
     axios
       .patch(editUserUrl, form, {
         headers: {

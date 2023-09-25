@@ -36,7 +36,7 @@ const Login = ({ setToken, setIsLoggedIn }) => {
         console.log(err.response.data.non_field_errors[0]);
         setError(err.response.data.non_field_errors[0]);
       });
-    console.log('form ', form);
+    
   };
 
   return (

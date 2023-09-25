@@ -5,6 +5,8 @@ import Q_Box from 'components/Q_Box';
 import Q_Answer_Box from 'components/Q_Answer_Box';
 
 const User_Profile = ({ token, isLoggedIn }) => {
+  console.log('isLoggedIn', isLoggedIn)
+
   const [userInfo, setUserInfo] = useState(null);
   const [questionInfo, setQuestionInfo] = useState([]);
   const [answersInfo, setAnswersInfo] = useState([]);
@@ -27,7 +29,6 @@ const User_Profile = ({ token, isLoggedIn }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log(isLoggedIn);
       const fetchUserInfo = async () => {
         if (isLoggedIn) {
           try {
@@ -62,8 +63,6 @@ const User_Profile = ({ token, isLoggedIn }) => {
           setUserInfo(null);
         }
       };
-
-      console.log(isLoggedIn);
 
       fetchUserInfo();
     }
@@ -112,7 +111,7 @@ const User_Profile = ({ token, isLoggedIn }) => {
                 {answersInfo &&
                   answersInfo.map((answer, index) => (
                     <Link to={`/questions/${answer.question}`} key={index}>
-                      <Q_Answer_Box answer={answer} />
+                      <Q_Answer_Box isLoggedIn={isLoggedIn} token= {token} answer={answer} />
                     </Link>
                   ))}
               </div>

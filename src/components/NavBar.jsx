@@ -30,7 +30,7 @@ const NavBar = ({
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log(isLoggedIn);
+      
       const fetchUserInfo = async () => {
         if (isLoggedIn) {
           try {
@@ -50,7 +50,7 @@ const NavBar = ({
         }
       };
 
-      console.log(isLoggedIn);
+      
 
       fetchUserInfo();
     }
