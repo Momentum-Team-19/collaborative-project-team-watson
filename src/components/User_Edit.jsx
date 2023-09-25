@@ -97,13 +97,13 @@ const User_Edit = ({ isLoggedIn, token }) => {
       .catch((err) => {
         if (err.response) {
           console.log(err.response.data);
-          // setError(err.response.data);
+          setError(err.response.data);
         } else if (err.request) {
           console.log(err.request);
           setError('Network error');
         } else {
           console.log(err.message);
-          // setError(err.message);
+          setError(err.message);
         }
       });
   };

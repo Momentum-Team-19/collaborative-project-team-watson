@@ -15,7 +15,7 @@ import User_Edit from './components/User_Edit';
 
 function App() {
   const [token, setToken] = useLocalStorageState('userToken', '');
-  
+
   const [isLoggedIn, setIsLoggedIn] = useLocalStorageState(
     'userIsLoggedIn',
     false
@@ -97,7 +97,7 @@ function App() {
         />
 
         <Route
-          path='/profile'
+          path='/profile/:userID'
           element={<User_Profile token={token} isLoggedIn={isLoggedIn} />}
         />
 
@@ -118,6 +118,7 @@ function App() {
         />
       </Routes>
       <Footer
+        token={token}
         setToken={setToken}
         setIsLoggedIn={setIsLoggedIn}
         isLoggedIn={isLoggedIn}

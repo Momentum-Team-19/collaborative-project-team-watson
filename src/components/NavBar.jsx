@@ -30,7 +30,6 @@ const NavBar = ({
 
   useEffect(() => {
     if (isLoggedIn) {
-      
       const fetchUserInfo = async () => {
         if (isLoggedIn) {
           try {
@@ -49,8 +48,6 @@ const NavBar = ({
           setUserInfo(null);
         }
       };
-
-      
 
       fetchUserInfo();
     }
@@ -110,7 +107,10 @@ const NavBar = ({
                 logout
               </p>
               {pathname !== '/profile' ? (
-                <Link to={{ pathname: '/profile' }} className='activeUserLink'>
+                <Link
+                  to={{ pathname: `/profile/${userInfo.id}` }}
+                  className='activeUserLink'
+                >
                   <img className='userNavImg' src={userImg}></img>
                 </Link>
               ) : null}
