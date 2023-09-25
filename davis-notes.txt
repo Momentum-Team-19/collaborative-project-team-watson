@@ -15,6 +15,8 @@ To-Do's
 -trigger search on "Enter" key ✅
 -search bar functionality ✅
 -Pagination for feed/search results ✅
+-'next' page button doesn't disable if last page = 0 ✅
+-inside handleLogout, run /auth/token/logout post, as soon as we get a 204 ✅ response the .then will trigger and then we can setToken('') and setIsLoggedIn(false)
 
 
 - add 'create' button to NavBar as well ✅/🚫
@@ -22,6 +24,8 @@ To-Do's
 -User Profile: 
   -user image ✅/🚫
   -user team number
+
+-create area inside user_profile to display bookmarked questions/answers 
 
 -make 'next' and 'prev' buttons also load the page at the top 
 
@@ -36,3 +40,4 @@ To-Do's
   -answer sholdn't cut off in elipsis after 1 line 
 
 -upvoting?
+

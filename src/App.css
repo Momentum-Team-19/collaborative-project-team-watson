@@ -404,11 +404,11 @@ header {
 }
 
 .userNavImg {
-  font-size: 3rem;
   text-align: center;
+  scale: 110%;
   margin: 0px;
   width: 90%;
-  border-radius: 40%;
+  border-radius: 50%;
 }
 
 .attribution {
@@ -486,6 +486,7 @@ header {
   font-family: "Avant Garde", sans-serif;
   font-size: 1em;
   color: var(--clr-accent);
+  background-color: var(--clr-light);
 }
 .username-input-box:hover, .email-input-box:hover, .edit-input-box:hover {
   border: 1px solid var(--clr-accent);
