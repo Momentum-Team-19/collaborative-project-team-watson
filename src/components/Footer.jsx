@@ -1,6 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
+const Footer = ({ token, setToken, setIsLoggedIn, isLoggedIn }) => {
+  const [userInfo, setUserInfo] = useState([]);
   const location = useLocation();
   const { pathname } = location;
 
@@ -8,6 +11,31 @@ const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
     setToken('');
     setIsLoggedIn(false);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      const fetchUserInfo = async () => {
+        if (isLoggedIn) {
+          try {
+            const userInfoUrl = `https://qb.fly.dev/auth/users/me/`;
+            const userInfoResponse = await axios.get(userInfoUrl, {
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Token ${token}`,
+              },
+            });
+            setUserInfo(userInfoResponse.data);
+          } catch (error) {
+            console.error('There was an error fetching data', error);
+          }
+        } else {
+          setUserInfo(null);
+        }
+      };
+
+      fetchUserInfo();
+    }
+  }, [token, isLoggedIn]);
 
   return (
     <>
@@ -25,7 +53,10 @@ const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
               <>
                 {pathname !== '/profile' ? (
                   <div className='footerLinkContainer'>
-                    <Link to={{ pathname: '/profile' }} className='footerLink'>
+                    <Link
+                      to={{ pathname: `/profile/${userInfo.id}` }}
+                      className='footerLink'
+                    >
                       Profile
                     </Link>
                   </div>
