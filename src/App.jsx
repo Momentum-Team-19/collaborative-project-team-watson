@@ -24,6 +24,15 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('darkMode');
+    } else {
+      document.body.classList.remove('darkMode');
+    }
+  }, [isDarkMode]);
 
   useEffect(() => {
     // Define an async function
@@ -57,6 +66,8 @@ function App() {
         isLoggedIn={isLoggedIn}
         setToken={setToken}
         setIsLoggedIn={setIsLoggedIn}
+        isDarkMode={isDarkMode}
+        setIsDarkMode={setIsDarkMode}
       >
         <SearchBar setSearchTerm={setSearchTerm} />
       </NavBar>
