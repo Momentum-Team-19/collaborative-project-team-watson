@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const NavBar = ({
   isLoggedIn,
@@ -7,9 +9,52 @@ const NavBar = ({
   isDarkMode,
   setIsDarkMode,
   children,
+  token,
 }) => {
   const location = useLocation();
   const { pathname } = location;
+  const [userInfo, setUserInfo] = useState([]);
+
+  const robohashUrl = userInfo
+    ? `https://robohash.org/${userInfo.username}${userInfo.id}.png`
+    : null;
+
+  let userImg;
+  if (userInfo) {
+    if (userInfo.photo === null) {
+      userImg = robohashUrl;
+    } else {
+      userImg = userInfo.photo;
+    }
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      console.log(isLoggedIn);
+      const fetchUserInfo = async () => {
+        if (isLoggedIn) {
+          try {
+            const userInfoUrl = `https://qb.fly.dev/auth/users/me/`;
+            const userInfoResponse = await axios.get(userInfoUrl, {
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Token ${token}`,
+              },
+            });
+            setUserInfo(userInfoResponse.data);
+          } catch (error) {
+            console.error('There was an error fetching data', error);
+          }
+        } else {
+          setUserInfo(null);
+        }
+      };
+
+      console.log(isLoggedIn);
+
+      fetchUserInfo();
+    }
+  }, [token, isLoggedIn]);
 
   const handleDark = () => {
     setIsDarkMode(!isDarkMode);
@@ -46,7 +91,7 @@ const NavBar = ({
               </p>
               {pathname !== '/profile' ? (
                 <Link to={{ pathname: '/profile' }} className='activeUserLink'>
-                  😎
+                  <img className='userNavImg' src={userImg}></img>
                 </Link>
               ) : null}
             </div>

@@ -68,6 +68,7 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}
+        token={token}
       >
         <SearchBar setSearchTerm={setSearchTerm} />
       </NavBar>
