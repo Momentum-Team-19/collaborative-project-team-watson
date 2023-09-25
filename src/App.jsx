@@ -24,7 +24,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState('isDakMode', false);
 
   useEffect(() => {
     if (isDarkMode) {
