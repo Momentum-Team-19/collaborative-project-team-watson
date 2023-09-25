@@ -46,7 +46,11 @@ const Q_Feed = ({ token, searchResults, itemsPerPage }) => {
             <div className='nextContainer'>
               <p
                 onClick={page === lastPage || page === 0 ? null : nextPage}
-                className={page === lastPage ? 'disabledNext' : 'nextButton'}
+                className={
+                  page === lastPage || lastPage === 0
+                    ? 'disabledNext'
+                    : 'nextButton'
+                }
               >
                 Next
               </p>

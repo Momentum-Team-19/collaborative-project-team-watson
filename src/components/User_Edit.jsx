@@ -16,10 +16,28 @@ const User_Edit = ({ isLoggedIn, token }) => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm((prev) => ({
-      ...form,
-      [e.target.name]: e.target.value,
-    }));
+    if (e.target.name === 'phone') {
+      const formatted = formatPhoneNumber(e.target.value);
+      setForm((prev) => ({
+        ...prev,
+        [e.target.name]: formatted,
+      }));
+    } else {
+      setForm((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value,
+      }));
+    }
+  };
+
+  const formatPhoneNumber = (phoneNumberString) => {
+    let number = ('' + phoneNumberString).replace(/\D/g, '');
+    if (number.length > 10) {
+      number = number.slice(0, 10);
+    }
+    const formattedNumber = '+' + number;
+    console.log(formattedNumber);
+    return formattedNumber;
   };
 
   useEffect(() => {
@@ -45,7 +63,13 @@ const User_Edit = ({ isLoggedIn, token }) => {
           console.error('There was an error fetching data', error);
         }
       } else {
-        setForm(null);
+        setForm({
+          username: '',
+          email: '',
+          phone: '',
+          first_name: '',
+          last_name: '',
+        });
       }
     };
 
