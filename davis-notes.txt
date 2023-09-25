@@ -1,5 +1,9 @@
 To-Do's 
 
+-NavBar ✅
+  -homepage
+  -search bar
+  -authorization links (login, sign up, logout, profile)
 -Implement message for user if login failed ✅
   -.catch error
 -User Registration page/form ✅
@@ -18,6 +22,8 @@ To-Do's
 -User Profile: 
   -user image ✅/🚫
   -user team number
+
+-make 'next' and 'prev' buttons also load the page at the top 
 
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
