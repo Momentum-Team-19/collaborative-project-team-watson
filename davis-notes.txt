@@ -2,39 +2,30 @@ To-Do's
 
 -Implement message for user if login failed ✅
   -.catch error
-
 -User Registration page/form ✅
-
 - have user auto logged in upon registration ✅
   -immediatley after registration make another request using their credentials to get token, chain request after previous response
-
 -Start looking into routing ✅
-
 -Created User_Profile ✅
   -linked 'profile' buttons
   -API request for user data
-
 -Added Footer with 'home' link and authorization links ✅
-
 -use local storage state ✅
-
 -User Profile: ✅
   -user first/last name
   -phone number
   -tags for languages known or tech proficient in 
-
 -trigger search on "Enter" key ✅
-
 -search bar functionality ✅
+-Pagination for feed/search results ✅
 
+
+- add 'create' button to NavBar as well ✅/🚫
 
 -User Profile: 
-  -user image
+  -user image ✅/🚫
   -user team number
-  
--Pagination for feed/search results
 
-- add 'create' button to NavBar as well
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
 
@@ -44,3 +35,5 @@ To-Do's
 
 -when creating question/answer, page ins't showing new question/answer until reload
   -answer sholdn't cut off in elipsis after 1 line 
+
+-upvoting?
