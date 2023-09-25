@@ -32,6 +32,10 @@
   margin: 0;
 }
 
+form {
+  box-sizing: unset;
+}
+
 a {
   color: #646cff;
   text-decoration: inherit;
