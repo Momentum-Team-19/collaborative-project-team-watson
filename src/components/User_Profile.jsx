@@ -5,7 +5,7 @@ import Q_Box from 'components/Q_Box';
 import Q_Answer_Box from 'components/Q_Answer_Box';
 
 const User_Profile = ({ token, isLoggedIn }) => {
-  console.log('isLoggedIn', isLoggedIn)
+  console.log('isLoggedIn', isLoggedIn);
 
   const [userInfo, setUserInfo] = useState(null);
   const [questionInfo, setQuestionInfo] = useState([]);
@@ -68,6 +68,20 @@ const User_Profile = ({ token, isLoggedIn }) => {
     }
   }, [token, isLoggedIn]);
 
+  const formatPhoneNumber = (userPhone) => {
+    let formatted = userPhone;
+    if (formatted[0] === '+') {
+      formatted = formatted.slice(1);
+    }
+    const match = formatted.match(/^(\d{1})(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return (
+        '+' + match[1] + ' ' + '(' + match[2] + ') ' + match[3] + '-' + match[4]
+      );
+    }
+    return null;
+  };
+
   if (userInfo) {
     return (
       <>
@@ -78,7 +92,9 @@ const User_Profile = ({ token, isLoggedIn }) => {
               <h4 className='profileInfo'>
                 Name: {userInfo.first_name || 'N/A'} {userInfo.last_name}
               </h4>
-              <h5 className='profileInfo'>Phone: {userInfo.phone || 'N/A'}</h5>
+              <h5 className='profileInfo'>
+                Phone: {formatPhoneNumber(userInfo.phone) || 'N/A'}
+              </h5>
               <h5 className='profileInfo'>Email: {userInfo.email || 'N/A'}</h5>
             </div>
             <div className='userImgContainer'>
@@ -111,7 +127,11 @@ const User_Profile = ({ token, isLoggedIn }) => {
                 {answersInfo &&
                   answersInfo.map((answer, index) => (
                     <Link to={`/questions/${answer.question}`} key={index}>
-                      <Q_Answer_Box isLoggedIn={isLoggedIn} token= {token} answer={answer} />
+                      <Q_Answer_Box
+                        isLoggedIn={isLoggedIn}
+                        token={token}
+                        answer={answer}
+                      />
                     </Link>
                   ))}
               </div>

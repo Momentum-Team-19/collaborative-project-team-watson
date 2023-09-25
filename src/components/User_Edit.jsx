@@ -33,11 +33,11 @@ const User_Edit = ({ isLoggedIn, token }) => {
   const formatPhoneNumber = (phoneNumberString) => {
     let number = ('' + phoneNumberString).replace(/\D/g, '');
     if (number.length > 10) {
-      number = number.slice(0, 10);
+      number = number.slice(0, 11);
     }
-    const formattedNumber = '+' + number;
-    console.log(formattedNumber);
-    return formattedNumber;
+    const formatted = '+' + number;
+    console.log(formatted);
+    return formatted;
   };
 
   useEffect(() => {
@@ -72,15 +72,17 @@ const User_Edit = ({ isLoggedIn, token }) => {
         });
       }
     };
-
     fetchUserInfo();
   }, [token, isLoggedIn]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if (form.phone.length !== 12) {
+      setError('Not a valid phone number');
+      return;
+    }
     const editUserUrl = `https://qb.fly.dev/auth/users/${id}/`;
-    
+    console.log('form, ', form);
     axios
       .patch(editUserUrl, form, {
         headers: {
