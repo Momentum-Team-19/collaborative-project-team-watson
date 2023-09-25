@@ -23,11 +23,6 @@ const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
           {pathname !== '/login' && pathname !== '/register' ? (
             isLoggedIn ? (
               <>
-                <div className='footerLinkContainer'>
-                  <div className='footerLink' onClick={handleLogout}>
-                    Logout
-                  </div>
-                </div>
                 {pathname !== '/profile' ? (
                   <div className='footerLinkContainer'>
                     <Link to={{ pathname: '/profile' }} className='footerLink'>
@@ -35,6 +30,11 @@ const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
                     </Link>
                   </div>
                 ) : null}
+                <div className='footerLinkContainer'>
+                  <div className='footerLink' onClick={handleLogout}>
+                    Logout
+                  </div>
+                </div>
               </>
             ) : (
               <>

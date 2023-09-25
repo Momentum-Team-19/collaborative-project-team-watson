@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import NavBar from 'components/NavBar';
 import SearchBar from 'components/SearchBar';
@@ -11,9 +11,7 @@ import User_Profile from 'components/User_Profile';
 import Footer from 'components/Footer';
 import axios from 'axios';
 import './App.css';
-// import questions from "./components/questions";
 import User_Edit from './components/User_Edit';
-// import { fetchData } from './assets/requests';
 
 function App() {
   const [token, setToken] = useLocalStorageState('userToken', '');
@@ -25,6 +23,7 @@ function App() {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isDarkMode, setIsDarkMode] = useLocalStorageState('isDakMode', false);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -73,13 +72,15 @@ function App() {
         <SearchBar setSearchTerm={setSearchTerm} />
       </NavBar>
       <Routes>
+        <Route path='/' element={<Navigate to='/page/1' replace />} />
         <Route
-          path='/'
+          path='/page/:page'
           element={
             <Q_Feed
               token={token}
               searchResults={searchResults}
               setSelectedQuestion={setSelectedQuestion}
+              itemsPerPage={itemsPerPage}
             />
           }
         />
