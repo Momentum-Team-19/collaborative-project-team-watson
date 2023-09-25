@@ -6,9 +6,6 @@ To-Do's
 - have user auto logged in upon registration ✅
   -immediatley after registration make another request using their credentials to get token, chain request after previous response
 -Start looking into routing ✅
--Created User_Profile ✅
-  -linked 'profile' buttons
-  -API request for user data
 -Added Footer with 'home' link and authorization links ✅
 -use local storage state ✅
 -trigger search on "Enter" key ✅
