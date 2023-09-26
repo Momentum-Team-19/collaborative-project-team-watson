@@ -99,7 +99,9 @@ const NavBar = ({
         </div>
         <div className='searchContainer'>{children}</div>
         <div className='addContainer'>
-          <p className='addButton'>+</p>
+          <p className='addButton'>
+            <Link to ={{pathname: '/new_question'}}>+</Link>
+          </p>
         </div>
         <div className='darkToggle'>
           <p

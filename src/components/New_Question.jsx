@@ -37,6 +37,7 @@ const New_Question = ({ token }) => {
 
     return (
         <Box>
+            <h3>Create a New Question</h3>
             <form onSubmit={handleSubmitClick}>
                 <TextField
                     label="Title"
