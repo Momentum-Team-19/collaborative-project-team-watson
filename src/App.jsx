@@ -45,7 +45,6 @@ function App() {
           {
             headers: {
               Accept: 'application/json',
-              Authorization: `Token ${token}`,
             },
           }
         );

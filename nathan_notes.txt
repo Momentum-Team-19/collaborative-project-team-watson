@@ -1,21 +1,14 @@
 Nathan To-Do's
-- Bug - editting profile info ()
-- Log out - sends to home page
-- New Question Component 
+- composition for Q_Feed and Q_Detail
+- context for global data
 
 Davis List
 - Create unique usernames
 - back button loads previous page
-
 - use spread operator to update page
-
-- Big task 
-
 
 Questions for Amy
 - Refresh page when click submit to get updated api request (deleted or editted Q)
 
 Ideas
-- "Ments" / "Moments" - points for getting upvotes or favorites answers
-- posts for good questions
-- Mentee and Mentor points?
+- "Ments" / "Moments" - points for getting upvotes or favorites answers, good questions

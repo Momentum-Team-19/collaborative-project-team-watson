@@ -4,8 +4,13 @@ import axios from "axios";
 const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) => {
     const [questionData, setQuestionData] = useState(null);
     
-
+    
     const handleAnswerAccepted = async (e) => {
+
+        // if (!loggedInUser) {
+        //     console.log('user', loggedInUser)
+        //     return;
+        // }
         
         const updatedAcceptedState = !answer.accepted;  // Toggle the current state
         
@@ -41,7 +46,7 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) =>
               {
                 headers: {
                   Accept: "application/json",
-                  Authorization: `Token ${token}`,
+                  
                 },
               }
             );
