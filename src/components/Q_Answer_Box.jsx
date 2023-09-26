@@ -20,7 +20,7 @@ const Q_Answer_Box = ({ answer, token, loggedInUser }) => {
         width: '80%',
         margin: 'auto',
         borderRadius: '12px',
-        backgroundColor: answer.accepted
+        backgroundColor: currentAnswer.accepted
           ? 'var(--clr-accepted)'
           : 'var(--clr-notaccepted)',
         marginBottom: '16px',
