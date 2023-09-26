@@ -11,19 +11,27 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* 'lightMode' */
   --clr-light: #ffffff;
-  --clr-dark: #676767;
+  --clr-dark: #515151;
   --clr-break: #d6d7db;
   --clr-accent: #23b8dd;
   --clr-text: #898989;
+  --clr-question: #e6f7ff;
+  --clr-accepted: #a7e7c3;
+  --clr-notaccepted: #f2f2f2;
 }
 
 .darkMode {
   --clr-light: #313131;
-  --clr-dark: #cacaca;
+  --clr-dark: #d0d0d0;
   --clr-break: #797979;
   --clr-accent: #18add2;
   --clr-text: #a2a2a2;
+  --clr-question: #43575f;
+  --clr-accepted: #035f2b;
+  --clr-notaccepted: #585858;
 }
 
 * {
@@ -422,7 +430,7 @@ header {
   text-align: center;
   position: absolute;
   bottom: 5px;
-  right: 10px;
+  right: 25px;
 }
 
 .q-box {
@@ -677,7 +685,7 @@ header {
   text-align: center;
   margin: 0px;
   width: 90%;
-  border-radius: 40%;
+  border-radius: 46%;
 }
 
 .profileInfoBox {
