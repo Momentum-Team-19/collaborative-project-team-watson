@@ -12,6 +12,7 @@ import Footer from 'components/Footer';
 import axios from 'axios';
 import './App.css';
 import User_Edit from './components/User_Edit';
+import New_Question from './components/New_Question';
 
 function App() {
   const [token, setToken] = useLocalStorageState('userToken', '');
@@ -94,6 +95,11 @@ function App() {
               setSelectedQuestion={setSelectedQuestion}
             />
           }
+        />
+
+        <Route
+          path='/new_question'
+          element={<New_Question token={token} />}
         />
 
         <Route
