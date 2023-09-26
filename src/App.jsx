@@ -63,7 +63,9 @@ function App() {
   }, [token, searchTerm]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, loggedInUser, setLoggedInUser }}>
+    <AuthContext.Provider
+      value={{ token, setToken, loggedInUser, setLoggedInUser }}
+    >
       <NavBar
         isLoggedIn={isLoggedIn}
         setToken={setToken}
@@ -98,10 +100,7 @@ function App() {
           }
         />
 
-        <Route
-          path='/new_question'
-          element={<New_Question token={token} />}
-        />
+        <Route path='/create' element={<New_Question token={token} />} />
 
         <Route
           path='/profile/:userID'
