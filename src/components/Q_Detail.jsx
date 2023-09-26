@@ -13,6 +13,10 @@ const Q_Detail = ({ token }) => {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
+    if (!loggedInUser) {
+            return;
+        }
+
     // Fetching the logged-in user's data
     const fetchLoggedInUser = async () => {
       try {
@@ -24,7 +28,13 @@ const Q_Detail = ({ token }) => {
         });
         setLoggedInUser(response.data);
       } catch (error) {
+
+        if (error.response.status === 401) {
+          setLoggedInUser(null);
+          console.log('User is not logged in');
+        } else {
         console.error('There was an error fetching logged-in user data', error);
+        }
       }
     };
 
@@ -41,7 +51,6 @@ const Q_Detail = ({ token }) => {
           {
             headers: {
               Accept: 'application/json',
-              Authorization: `Token ${token}`,
             },
           }
         );
