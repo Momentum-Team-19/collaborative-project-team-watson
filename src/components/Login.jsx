@@ -29,7 +29,7 @@ const Login = ({ setToken, setIsLoggedIn }) => {
         if (res.status === 200) {
           setToken(res.data.auth_token);
           setIsLoggedIn(true);
-          navigate('/');
+          navigate(-1);
         }
       })
       .catch((err) => {
