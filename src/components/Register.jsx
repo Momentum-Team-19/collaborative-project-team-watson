@@ -41,7 +41,7 @@ const Register = ({ setToken, setIsLoggedIn }) => {
           if (res.status === 200) {
             setToken(res.data.auth_token);
             setIsLoggedIn(true);
-            navigate('/');
+            navigate(-1);
           }
         })
 
