@@ -2,8 +2,9 @@ import Q_Answer_Box from './Q_Answer_Box';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
 
-const Q_Answer_List = ({ answers, loggedInUser }) => {
+const Q_Answer_List = ({ answers }) => {
   const token = useContext(AuthContext);
+  const loggedInUser = useContext(AuthContext);
 
   if (Array.isArray(answers)) {
     return (

@@ -17,6 +17,7 @@ import AuthContext from './components/AuthContext';
 
 function App() {
   const [token, setToken] = useLocalStorageState('userToken', '');
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   const [isLoggedIn, setIsLoggedIn] = useLocalStorageState(
     'userIsLoggedIn',
@@ -62,7 +63,7 @@ function App() {
   }, [token, searchTerm]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, setToken, loggedInUser, setLoggedInUser }}>
       <NavBar
         isLoggedIn={isLoggedIn}
         setToken={setToken}

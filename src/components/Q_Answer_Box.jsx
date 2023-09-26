@@ -3,8 +3,9 @@ import { Card, CardContent, Typography } from '@mui/material';
 import Q_Answer_Accepted from './Q_Answer_Accepted';
 import AuthContext from './AuthContext';
 
-const Q_Answer_Box = ({ answer, loggedInUser }) => {
+const Q_Answer_Box = ({ answer }) => {
   const token = useContext(AuthContext);
+  const loggedInUser = useContext(AuthContext);
   
   const [currentAnswer, setCurrentAnswer] = useState(answer);
 

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import AuthContext from "./AuthContext";
 
-const Q_Answer_Accepted = ({ answer, loggedInUser, onToggleAccepted }) => {
+const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
   const token = useContext(AuthContext);
+  const loggedInUser = useContext(AuthContext);
   const [questionData, setQuestionData] = useState(null);
 
   const handleAnswerAccepted = async (e) => {
