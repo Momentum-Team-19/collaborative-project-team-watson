@@ -14,6 +14,7 @@ const Q_Detail = () => {
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
 
+
   const navigate = useNavigate();
 
   const handleBack = () => {
