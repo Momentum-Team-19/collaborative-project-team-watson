@@ -13,12 +13,6 @@ const Q_Detail = () => {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
-  
-
-  console.log("loggedInUser", loggedInUser);
-  if (questionData) {
-    console.log("questionData", questionData);
-  }
 
   useEffect(() => {
 
