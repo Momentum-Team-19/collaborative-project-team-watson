@@ -4,13 +4,11 @@ import axios from "axios";
 const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) => {
     const [questionData, setQuestionData] = useState(null);
     console.log('answer accepted', answer.accepted)
-    console.log(token)
-    console.log(answer)
 
     const handleAnswerAccepted = async (e) => {
         
         const updatedAcceptedState = !answer.accepted;  // Toggle the current state
-        
+        console.log('updatedAcceptedState', updatedAcceptedState)
         try {
             const response = await axios.patch(
                 `https://qb.fly.dev/answers/${answer.id}/accept`,
@@ -22,11 +20,12 @@ const Q_Answer_Accepted = ({ token, answer, loggedInUser, onToggleAccepted }) =>
                     },
                 }
             );
-            console.log('response', response)
+            console.log('response', response.data)
+            console.log
 
-            if (response.status === 200) {
-                onToggleAccepted(updatedAcceptedState);
-            }
+            
+            onToggleAccepted(updatedAcceptedState);
+            
 
             
         } catch (error) {
