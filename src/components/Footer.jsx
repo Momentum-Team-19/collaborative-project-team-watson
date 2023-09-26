@@ -29,6 +29,11 @@ const Footer = ({ token, setToken, setIsLoggedIn, isLoggedIn }) => {
           'There was an error logging out',
           err.response.data.non_field_errors
         );
+        if (err.response.status === 401) {
+          setToken('');
+          setIsLoggedIn(false);
+          navigate('/login');
+        }
       });
   };
 
