@@ -1,12 +1,12 @@
-import { Typography, Box, Stack, Container, Button } from "@mui/material";
-import Q_Delete from "./Q_Delete";
-import Q_Edit from "./Q_Edit";
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import Q_Answer from "./Q_Answer";
-import Q_Answer_List from "./Q_Answer_List";
-import AuthContext from "./AuthContext";
+import { Typography, Box, Stack, Container, Button } from '@mui/material';
+import Q_Delete from './Q_Delete';
+import Q_Edit from './Q_Edit';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import Q_Answer from './Q_Answer';
+import Q_Answer_List from './Q_Answer_List';
+import AuthContext from './AuthContext';
 
 const Q_Detail = () => {
   const { token } = useContext(AuthContext);
@@ -14,8 +14,19 @@ const Q_Detail = () => {
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
 
-  useEffect(() => {
 
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  console.log('loggedInUser', loggedInUser);
+  if (questionData) {
+    console.log('questionData', questionData);
+  }
+
+  useEffect(() => {
     if (!loggedInUser) {
       return;
     }
@@ -25,7 +36,7 @@ const Q_Detail = () => {
       try {
         const response = await axios.get(`https://qb.fly.dev/auth/users/me/`, {
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
             Authorization: `Token ${token}`,
           },
         });
@@ -33,10 +44,10 @@ const Q_Detail = () => {
       } catch (error) {
         if (error.response.status === 401) {
           setLoggedInUser(null);
-          console.log("User is not logged in");
+          console.log('User is not logged in');
         } else {
           console.error(
-            "There was an error fetching logged-in user data",
+            'There was an error fetching logged-in user data',
             error
           );
         }
@@ -55,7 +66,7 @@ const Q_Detail = () => {
           `https://qb.fly.dev/questions/${questionID}`,
           {
             headers: {
-              Accept: "application/json",
+              Accept: 'application/json',
             },
           }
         );
@@ -64,7 +75,7 @@ const Q_Detail = () => {
         setQuestionData(response.data);
       } catch (error) {
         // Handle the error
-        console.error("There was an error fetching data", error);
+        console.error('There was an error fetching data', error);
       }
     };
 
@@ -74,34 +85,32 @@ const Q_Detail = () => {
   if (!questionData) {
     return (
       <>
-        <p style={{ color: "var(--clr-light)" }}>Not a valid question ID</p>;
-        <Link to="/">
-          <Button variant="contained" color="primary">
-            Back
-          </Button>
-        </Link>
+        <p style={{ color: 'var(--clr-light)' }}>Not a valid question ID</p>;
+        <Button variant='contained' color='primary' onClick={handleBack}>
+          Back
+        </Button>
       </>
     );
   }
 
   return (
     <>
-      <Box textAlign="left">
-        <Typography variant="h4" style={{ color: "var(--clr-dark)" }}>
+      <Box textAlign='left'>
+        <Typography variant='h4' style={{ color: 'var(--clr-dark)' }}>
           {questionData.title}
         </Typography>
-        <Typography variant="h5" style={{ color: "var(--clr-dark)" }}>
-          Author: {questionData.author.username || "N/A"}
+        <Typography variant='h5' style={{ color: 'var(--clr-dark)' }}>
+          Author: {questionData.author.username || 'N/A'}
         </Typography>
       </Box>
 
       <Container
         maxWidth={false}
-        style={{ width: "100%", backgroundColor: "var(--clr-light)" }}
+        style={{ width: '100%', backgroundColor: 'var(--clr-light)' }}
       >
-        <Box textAlign="left">
-          <Typography variant="body2" style={{ color: "var(--clr-dark)" }}>
-            Body: {questionData.body}{" "}
+        <Box textAlign='left'>
+          <Typography variant='body2' style={{ color: 'var(--clr-dark)' }}>
+            Body: {questionData.body}{' '}
           </Typography>
         </Box>
       </Container>
@@ -112,7 +121,7 @@ const Q_Detail = () => {
         loggedInUser={loggedInUser}
       />
 
-      <Stack spacing={2} direction={"row"}>
+      <Stack spacing={2} direction={'row'}>
         <Q_Answer token={token} questionID={questionID} />
 
         {/* Conditionally render Q_Edit and Q_Delete if user is author */}
@@ -125,11 +134,9 @@ const Q_Detail = () => {
           )}
       </Stack>
 
-      <Link to="/">
-        <Button variant="contained" color="primary" sx={{ my: 1 }}>
-          Back
-        </Button>
-      </Link>
+      <Button variant='contained' color='primary' onClick={handleBack}>
+        Back
+      </Button>
     </>
   );
 };

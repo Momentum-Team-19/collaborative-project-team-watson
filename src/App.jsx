@@ -135,7 +135,7 @@ function App() {
           }
         />
 
-        <Route path="/new_question" element={<New_Question token={token} />} />
+        <Route path='/create' element={<New_Question token={token} />} />
 
         <Route
           path="/profile/:userID"
