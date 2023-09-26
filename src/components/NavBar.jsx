@@ -99,11 +99,11 @@ const NavBar = ({
           </Link>
         </div>
         <div className='searchContainer'>{children}</div>
-        <div className='addContainer'>
-          <p className='addButton'>
-            <Link to ={{pathname: '/new_question'}}>+</Link>
-          </p>
-        </div>
+        <Link to={{ pathname: '/create' }}>
+          <div className='addContainer'>
+            <p className='addButton'>+</p>
+          </div>
+        </Link>
         <div className='darkToggle'>
           <p
             className={isDarkMode ? 'darkInput' : 'lightInput'}
