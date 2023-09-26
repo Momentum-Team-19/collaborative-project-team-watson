@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AuthContext from './AuthContext';
 
 const NavBar = ({
   isLoggedIn,
@@ -9,8 +10,8 @@ const NavBar = ({
   isDarkMode,
   setIsDarkMode,
   children,
-  token,
 }) => {
+  const { token } = useContext(AuthContext);
   const location = useLocation();
   const { pathname } = location;
   const [userInfo, setUserInfo] = useState([]);

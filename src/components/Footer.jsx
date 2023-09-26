@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import AuthContext from './AuthContext';
 
-const Footer = ({ token, setToken, setIsLoggedIn, isLoggedIn }) => {
+const Footer = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
+  const { token } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState([]);
   const location = useLocation();
   const { pathname } = location;

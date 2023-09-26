@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Q_Box from 'components/Q_Box';
 import Q_Answer_Box from 'components/Q_Answer_Box';
+import AuthContext from './AuthContext';
 
-const User_Profile = ({ token, isLoggedIn }) => {
+const User_Profile = ({ isLoggedIn }) => {
   const { userID } = useParams();
+  const { token } = useContext(AuthContext);
 
   const [userInfo, setUserInfo] = useState(null);
   const [bookmarkInfo, setBookmarkInfo] = useState([]);

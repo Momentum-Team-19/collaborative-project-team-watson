@@ -1,6 +1,7 @@
 Nathan To-Do's
 - composition for Q_Feed and Q_Detail
 - context for global data
+- Bug - edit/delete question button not showing
 
 Davis List
 - Create unique usernames

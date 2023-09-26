@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from './AuthContext';
 
-const User_Edit = ({ isLoggedIn, token }) => {
+const User_Edit = ({ isLoggedIn }) => {
+  const { token } = useContext(AuthContext);
   const [id, setId] = useState('');
   const [form, setForm] = useState({
     username: '',

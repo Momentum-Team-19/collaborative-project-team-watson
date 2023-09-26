@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'; // Added useState
+import React, { useEffect, useState, useContext } from 'react'; // Added useState
 import { Card, CardContent, Typography } from '@mui/material';
 import Q_Answer_Accepted from './Q_Answer_Accepted';
+import AuthContext from './AuthContext';
 
-const Q_Answer_Box = ({ answer, token, loggedInUser }) => {
-  // Assuming token is passed as prop
+const Q_Answer_Box = ({ answer, loggedInUser }) => {
+  const token = useContext(AuthContext);
+  
   const [currentAnswer, setCurrentAnswer] = useState(answer);
 
   const handleAnswerAccepted = (updatedAcceptedState) => {

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Button, TextField, Box } from "@mui/material";
+import AuthContext from "./AuthContext";
 
-const Q_Delete = ({ token, questionID }) => {
+const Q_Delete = ({ questionID }) => {
+  const { token } = useContext(AuthContext);
   
   const handleDeleteClick = async (e) => {
     e.preventDefault();

@@ -1,8 +1,10 @@
 import { Box, Button, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import AuthContext from "./AuthContext";
 
-const Q_Edit = ({ token, questionID }) => {
+const Q_Edit = ({ questionID }) => {
+  const { token } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
