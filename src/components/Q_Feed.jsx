@@ -1,6 +1,7 @@
 import Q_Box from 'components/Q_Box';
 import Q_Create from './Q_Create';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 const Q_Feed = ({ token, searchResults, itemsPerPage }) => {
   const page = parseInt(useParams().page, 10);
@@ -27,6 +28,7 @@ const Q_Feed = ({ token, searchResults, itemsPerPage }) => {
   if (Array.isArray(paginateData())) {
     return (
       <>
+        <ScrollToTop />
         <div className='qFeedContainer'>
           {paginateData() &&
             paginateData().map((question, index) => (
