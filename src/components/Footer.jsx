@@ -8,8 +8,28 @@ const Footer = ({ token, setToken, setIsLoggedIn, isLoggedIn }) => {
   const { pathname } = location;
 
   const handleLogout = () => {
-    setToken('');
-    setIsLoggedIn(false);
+    const logoutUrl = 'https://qb.fly.dev/auth/token/logout/';
+    axios
+      .post(
+        logoutUrl,
+        {},
+        {
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        setToken('');
+        setIsLoggedIn(false);
+      })
+      .catch((err) => {
+        console.log(
+          'There was an error logging out',
+          err.response.data.non_field_errors
+        );
+      });
   };
 
   useEffect(() => {
