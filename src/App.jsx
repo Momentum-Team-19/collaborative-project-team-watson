@@ -13,6 +13,7 @@ import axios from 'axios';
 import './App.css';
 import User_Edit from './components/User_Edit';
 import New_Question from './components/New_Question';
+import AuthContext from './components/AuthContext';
 
 function App() {
   const [token, setToken] = useLocalStorageState('userToken', '');
@@ -61,7 +62,7 @@ function App() {
   }, [token, searchTerm]);
 
   return (
-    <>
+    <AuthContext.Provider value={{ token, setToken }}>
       <NavBar
         isLoggedIn={isLoggedIn}
         setToken={setToken}
@@ -128,7 +129,7 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
         isLoggedIn={isLoggedIn}
       />
-    </>
+    </AuthContext.Provider>
   );
 }
 

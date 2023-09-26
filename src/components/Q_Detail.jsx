@@ -2,12 +2,14 @@ import { Typography, Box, Stack, Container, Button } from '@mui/material';
 import Q_Delete from './Q_Delete';
 import Q_Edit from './Q_Edit';
 import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Q_Answer from './Q_Answer';
 import Q_Answer_List from './Q_Answer_List';
+import AuthContext from './AuthContext';
 
-const Q_Detail = ({ token }) => {
+const Q_Detail = () => {
+  const { token } = useContext(AuthContext);
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);

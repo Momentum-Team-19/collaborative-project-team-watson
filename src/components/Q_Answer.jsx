@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Box, Button, TextField } from "@mui/material";
+import AuthContext from "./AuthContext";
 
-const Q_Answer = ({ token, questionID }) => {
+const Q_Answer = ({ questionID }) => {
+  const { token } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
   const [text, setText] = useState("");
 

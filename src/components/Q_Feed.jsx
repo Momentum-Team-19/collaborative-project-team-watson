@@ -2,8 +2,11 @@ import Q_Box from 'components/Q_Box';
 import Q_Create from './Q_Create';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
+import { useContext } from 'react';
+import AuthContext from './AuthContext';
 
-const Q_Feed = ({ token, searchResults, itemsPerPage }) => {
+const Q_Feed = ({ searchResults, itemsPerPage }) => {
+  const { token } = useContext(AuthContext);
   const page = parseInt(useParams().page, 10);
   const navigate = useNavigate();
   const numPerPage = itemsPerPage;
