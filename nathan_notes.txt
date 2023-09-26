@@ -1,20 +1,18 @@
 Nathan To-Do's
-- Bug - for edit answer accept on profile page
-- Bug - unaccepting answer not saving
-- Bug - home page without logging in (similar backend changes)
-    - Question Detail
-- Bug - editting profile info
-- use author id and user id (or ensure unique usernames)
-- back button (need to be updated or changes to question feed)
-- Create question page
+- Bug - editting profile info ()
+- Log out - sends to home page
+- New Question Component 
+
+Davis List
+- Create unique usernames
+- back button loads previous page
+
 - use spread operator to update page
-- Bug - Q-Detail needs to show Accept/Unaccept for loggedInUser
 
 - Big task 
 
 
 Questions for Amy
-- Ask about endpoint (search questions needs token)
 - Refresh page when click submit to get updated api request (deleted or editted Q)
 
 Ideas
