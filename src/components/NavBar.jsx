@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const NavBar = ({
@@ -14,6 +14,8 @@ const NavBar = ({
   const location = useLocation();
   const { pathname } = location;
   const [userInfo, setUserInfo] = useState([]);
+
+  const navigate = useNavigate();
 
   const robohashUrl = userInfo
     ? `https://robohash.org/${userInfo.username}${userInfo.id}.png`
@@ -79,6 +81,9 @@ const NavBar = ({
           'There was an error logging out',
           err.response.data.non_field_errors
         );
+        if (err.response.status === 401) {
+          navigate('/login');
+        }
       });
   };
 

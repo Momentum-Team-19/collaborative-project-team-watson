@@ -27,6 +27,8 @@ To-Do's
 
 -create area inside user_profile to display bookmarked questions/answers ✅/🚫
 
+-route user back to where they were previously after logging in/registering or with nathan's 'back' button 
+
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
 
