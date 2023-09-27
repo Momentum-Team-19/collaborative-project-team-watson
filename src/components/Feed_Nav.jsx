@@ -9,6 +9,7 @@ const Feed_Nav = ({ itemsPerPage, setItemsPerPage, filter, setFilter }) => {
     <>
       <div className='feed-nav'>
         <select
+          id='filterbox'
           value={filter}
           onChange={handleFilterChange}
           className='filter-box'
