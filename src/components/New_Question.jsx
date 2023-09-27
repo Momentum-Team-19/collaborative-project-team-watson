@@ -10,14 +10,17 @@ const New_Question = ({ token, isLoggedIn }) => {
   const [form, setForm] = useState({
     title: '',
     body: '',
+    tags: [],
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const value =
+      e.target.name === 'tags' ? e.target.value.split(', ') : e.target.value;
     setForm((prev) => ({
       ...form,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     }));
   };
 
@@ -41,6 +44,7 @@ const New_Question = ({ token, isLoggedIn }) => {
       setForm({
         title: '',
         body: '',
+        tags: [],
       });
       navigate(-1);
     } catch (error) {
