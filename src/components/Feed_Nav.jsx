@@ -13,6 +13,7 @@ const Feed_Nav = ({ itemsPerPage, setItemsPerPage, filter, setFilter }) => {
           value={filter}
           onChange={handleFilterChange}
           className='filter-box'
+          autocomplete='off'
         >
           <option value='default'>Default</option>
           <option value='date'>Date</option>
@@ -26,6 +27,7 @@ const Feed_Nav = ({ itemsPerPage, setItemsPerPage, filter, setFilter }) => {
           onChange={(e) => setItemsPerPage(Number(e.target.value))}
           min='1'
           max='20'
+          autocomplete='off'
         />
       </div>
     </>

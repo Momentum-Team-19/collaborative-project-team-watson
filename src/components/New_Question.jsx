@@ -143,9 +143,9 @@ const New_Question = ({ token, isLoggedIn }) => {
                 type='text'
                 name='tags'
                 id='tags'
-                // required
-                // value={form.tags}
-                // onChange={handleChange}
+                required
+                value={form.tags}
+                onChange={handleChange}
                 onFocus={() => setError(null)}
               />
             </div>
