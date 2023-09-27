@@ -6,7 +6,6 @@ import AuthContext from './AuthContext';
 const Q_Answer_Box = ({ answer }) => {
   const token = useContext(AuthContext);
   const loggedInUser = useContext(AuthContext);
-  
   const [currentAnswer, setCurrentAnswer] = useState(answer);
 
   const handleAnswerAccepted = (updatedAcceptedState) => {
