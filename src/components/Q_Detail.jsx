@@ -7,6 +7,7 @@ import axios from 'axios';
 import Q_Answer from './Q_Answer';
 import Q_Answer_List from './Q_Answer_List';
 import AuthContext from './AuthContext';
+import Q_Bookmark from './Q_Bookmark';
 
 const Q_Detail = () => {
   const { token } = useContext(AuthContext);
@@ -14,12 +15,18 @@ const Q_Detail = () => {
   const { questionID } = useParams();
   const [questionData, setQuestionData] = useState(null);
 
-
   const navigate = useNavigate();
-
+  
   const handleBack = () => {
     navigate(-1);
   };
+
+  const onToggleBookmarked = (updatedBookmarkedState) => {
+    setCurrentQuestion({
+      ...currentQuestion,
+      bookmarked: updatedBookmarkedState,
+    });
+  }
 
   useEffect(() => {
     if (!loggedInUser) {
@@ -127,9 +134,13 @@ const Q_Detail = () => {
               <Q_Delete token={token} questionID={questionID} />
             </>
           )}
+
+        <Q_Bookmark questionData={questionData} onToggleBookmarked={onToggleBookmarked}/>
       </Stack>
 
-      <Button variant='contained' color='primary' onClick={handleBack}>
+
+
+      <Button variant='contained' color='primary' onClick={handleBack} sx={{ marginTop:'10px'}}>
         Back
       </Button>
     </>

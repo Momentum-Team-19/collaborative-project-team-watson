@@ -1,8 +1,7 @@
 Nathan To-Do's
-- Error - not logged in and question detail
 - Bookmarks
 - Filter by date and votes
-- ascending, descending
+- Filter by ascending, descending
 - upload file / image
 
 
