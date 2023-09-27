@@ -143,7 +143,7 @@ const New_Question = ({ token, isLoggedIn }) => {
                 type='text'
                 name='tags'
                 id='tags'
-                required
+                // required
                 // value={form.tags}
                 // onChange={handleChange}
                 onFocus={() => setError(null)}
