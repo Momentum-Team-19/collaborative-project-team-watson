@@ -18,8 +18,8 @@ To-Do's f
 -'next' page button doesn't disable if last page = 0 ✅
 -inside handleLogout, run /auth/token/logout post, as soon as we get a 204 response the .then will trigger and then we can setToken('') and setIsLoggedIn(false) ✅
 -make 'next' and 'prev' buttons also load the page at the top ✅
-
-- add 'create' button to NavBar as well ✅/🚫
+-route user back to where they were previously after logging in/registering or with q_details's 'back' button ✅
+- add 'create' button to NavBar as well ✅
 
 -User Profile: 
   -user image ✅/🚫
@@ -27,14 +27,11 @@ To-Do's f
 
 -create area inside user_profile to display bookmarked questions/answers ✅/🚫
 
--route user back to where they were previously after logging in/registering or with nathan's 'back' button 
-
 
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
 
 -notifications:
   -if someone answers your question ?
-
 
 -when creating question/answer, page ins't showing new question/answer until reload
   -answer sholdn't cut off in elipsis after 1 line 
