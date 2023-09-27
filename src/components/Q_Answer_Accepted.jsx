@@ -3,9 +3,9 @@ import axios from "axios";
 import AuthContext from "./AuthContext";
 
 const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
-  const token = useContext(AuthContext);
-  const loggedInUser = useContext(AuthContext);
+  const { token, loggedInUser }  = useContext(AuthContext);
   const [questionData, setQuestionData] = useState(null);
+  
   
   const handleAnswerAccepted = async (e) => {
     const updatedAcceptedState = !answer.accepted; // Toggle the current state
@@ -64,7 +64,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
   return (
     <div>
       {loggedInUser &&
-        loggedInUser.loggedInUser.username === questionData.author.username && (
+        loggedInUser?.loggedInUser?.username === questionData.author.username && (
           <button onClick={handleAnswerAccepted}>
             {answer.accepted ? "Unaccept Answer" : "Accept Answer"}
           </button>
