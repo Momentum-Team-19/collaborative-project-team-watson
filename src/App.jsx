@@ -7,6 +7,7 @@ import Login from 'components/Login';
 import Register from 'components/Register';
 import Q_Detail from 'components/Q_Detail';
 import Q_Feed from 'components/Q_Feed';
+import Feed_Nav from 'components/Feed_Nav';
 import User_Profile from 'components/User_Profile';
 import Footer from 'components/Footer';
 import axios from 'axios';
@@ -31,6 +32,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDarkMode, setIsDarkMode] = useLocalStorageState('isDakMode', false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [filter, setFilter] = useState('default');
 
   useEffect(() => {
     if (isDarkMode) {
@@ -120,7 +122,15 @@ function App() {
               searchResults={searchResults}
               setSelectedQuestion={setSelectedQuestion}
               itemsPerPage={itemsPerPage}
-            />
+              setItemsPerPage={setItemsPerPage}
+            >
+              <Feed_Nav
+                itemsPerPage={itemsPerPage}
+                setItemsPerPage={setItemsPerPage}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            </Q_Feed>
           }
         />
         <Route

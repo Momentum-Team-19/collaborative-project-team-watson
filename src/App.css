@@ -110,6 +110,7 @@ header {
   width: 100%;
   min-height: 100vh;
   background-color: var(--clr-light);
+  position: relative;
 }
 
 .linkContainer {
@@ -755,7 +756,44 @@ header {
 }
 
 .qFeedContainer {
-  margin-top: 20px;
+  margin-top: 15px;
+}
+
+.feed-nav {
+  width: 100%;
+  border-bottom: 1px solid var(--clr-break);
+  display: flex;
+  justify-content: right;
+}
+
+.filter-box {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid var(--clr-break);
+  padding: 4px;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  margin-right: 10px;
+}
+.filter-box:hover {
+  border: 1px solid var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+.number-per-page-input {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid var(--clr-break);
+  padding: 4px;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  margin-right: 50px;
+}
+.number-per-page-input:hover {
+  border: 1px solid var(--clr-accent);
+  color: var(--clr-accent);
 }
 
 .paginationControlsContainer {

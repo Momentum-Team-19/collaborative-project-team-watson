@@ -5,7 +5,7 @@ import ScrollToTop from './ScrollToTop';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
 
-const Q_Feed = ({ searchResults, itemsPerPage }) => {
+const Q_Feed = ({ searchResults, itemsPerPage, children }) => {
   const { token } = useContext(AuthContext);
   const page = parseInt(useParams().page, 10);
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ const Q_Feed = ({ searchResults, itemsPerPage }) => {
     return (
       <>
         <ScrollToTop />
+        {children}
         <div className='qFeedContainer'>
           {paginateData() &&
             paginateData().map((question, index) => (
