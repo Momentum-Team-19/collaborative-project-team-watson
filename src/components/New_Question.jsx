@@ -127,6 +127,28 @@ const New_Question = ({ token, isLoggedIn }) => {
                 onFocus={() => setError(null)}
               />
             </div>
+            <div className='tags-input'>
+              <label htmlFor='tags' className='tags-label'>
+                Tags:{' '}
+              </label>
+              <p className='tags-subtitle'>
+                Add tags to describe what your question is about.
+              </p>
+              <p className='tags-subtitle'>
+                This will help members of the community find your question.
+              </p>
+              <input
+                className='tags-input-box'
+                placeholder='example: JavaScript, Python, CSS, Flexbox, Dog Adoption, Blackjack'
+                type='text'
+                name='tags'
+                id='tags'
+                required
+                // value={form.tags}
+                // onChange={handleChange}
+                onFocus={() => setError(null)}
+              />
+            </div>
             {error && <div className='error-message'>{error}</div>}
             <div className='submit-button-container'>
               <p className='submit-subtitle'>

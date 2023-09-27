@@ -909,7 +909,8 @@ header {
   border: 1px solid var(--clr-break);
   width: 95%;
   margin-top: 20px;
-  padding: 20px;
+  padding: 15px;
+  padding-left: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -937,6 +938,9 @@ header {
 }
 
 .title-input-box {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
   margin-top: 25px;
   border: 1px solid var(--clr-break);
   border-radius: 5px;
@@ -958,7 +962,8 @@ header {
   border: 1px solid var(--clr-break);
   width: 95%;
   margin-top: 20px;
-  padding: 20px;
+  padding: 15px;
+  padding-left: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -977,6 +982,9 @@ header {
 }
 
 .body-input-box {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
   margin-top: 25px;
   border: 1px solid var(--clr-break);
   border-radius: 5px;
@@ -996,6 +1004,59 @@ header {
   color: var(--clr-accent);
 }
 
+.tags-input {
+  border: 1px solid var(--clr-break);
+  width: 95%;
+  margin-top: 20px;
+  padding: 15px;
+  padding-left: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.tags-input:hover {
+  border: 1px solid var(--clr-accent);
+}
+
+.tags-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  line-height: 1.4;
+  color: var(--clr-dark);
+  margin-bottom: 5px;
+}
+
+.tags-subtitle {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
+  line-height: .8;
+  color: var(--clr-dark);
+  margin-top: 5px;
+}
+
+.tags-input-box {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
+  margin-top: 25px;
+  border: 1px solid var(--clr-break);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+}
+.tags-input:hover .tags-input-box {
+  border: 1px solid var(--clr-accent);
+}
+.tags-input-box::placeholder {
+  color: var(--clr-text);
+}
+.tags-input:hover .tags-input-box::placeholder {
+  color: var(--clr-accent);
+}
+
 .submit-button-container {
   width: 95%;
   margin: 25px;
@@ -1012,6 +1073,7 @@ header {
   font-size: 1.2em;
   color: var(--clr-light);
   cursor: pointer;
+  margin-left: 20px;
 }
 .submit-button:hover {
   transform: scale(105%);
@@ -1028,5 +1090,7 @@ header {
   font-weight: normal;
   line-height: .8;
   color: var(--clr-text);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-top: 15px;
 }
