@@ -21,6 +21,7 @@
   --clr-question: #e6f7ff;
   --clr-accepted: #a7e7c3;
   --clr-notaccepted: #f2f2f2;
+  --clr-highlight: #09ceff1e;
 }
 
 .darkMode {
@@ -32,6 +33,7 @@
   --clr-question: #43575f;
   --clr-accepted: #035f2b;
   --clr-notaccepted: #585858;
+  --clr-highlight: #18add21e;
 }
 
 * {
@@ -67,6 +69,12 @@ h2 {
 
 h4 {
   color: var(--clr-dark);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 button {
@@ -813,4 +821,212 @@ header {
 .prevButton:active, .nextButton:active {
   transform: scale(95%);
   transition: transform 0.2s;
+}
+
+.new-question-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  width: 100%;
+}
+
+.new-question-text {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.4em;
+  font-weight: bolder;
+  line-height: .8;
+  color: var(--clr-dark);
+}
+
+.guide-container {
+  border: 1px solid var(--clr-accent);
+  background-color: var(--clr-highlight);
+  width: 95%;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.guide-title {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: .8;
+  color: var(--clr-dark);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.guide-subtitle {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: .8;
+  color: var(--clr-dark);
+  margin-top: 5px;
+}
+
+.steps {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: .8;
+  color: var(--clr-dark);
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.steps-box {
+  margin-left: 10px;
+}
+
+.steps-text {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
+  line-height: 1.4;
+  color: var(--clr-dark);
+}
+
+.create-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-input {
+  border: 1px solid var(--clr-break);
+  width: 95%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.title-input:hover {
+  border: 1px solid var(--clr-accent);
+}
+
+.title-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  line-height: 1.4;
+  color: var(--clr-dark);
+  margin-bottom: 5px;
+}
+
+.label-subtitle {
+  font-family: "Avant Garde", sans-serif;
+  font-size: .9em;
+  font-weight: normal;
+  line-height: .8;
+  color: var(--clr-dark);
+  margin-top: 5px;
+}
+
+.title-input-box {
+  margin-top: 25px;
+  border: 1px solid var(--clr-break);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+}
+.title-input:hover .title-input-box {
+  border: 1px solid var(--clr-accent);
+}
+.title-input-box::placeholder {
+  color: var(--clr-text);
+}
+.title-input:hover .title-input-box::placeholder {
+  color: var(--clr-accent);
+}
+
+.body-input {
+  border: 1px solid var(--clr-break);
+  width: 95%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.body-input:hover {
+  border: 1px solid var(--clr-accent);
+}
+
+.body-label {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  line-height: 1.4;
+  color: var(--clr-dark);
+  margin-bottom: 5px;
+}
+
+.body-input-box {
+  margin-top: 25px;
+  border: 1px solid var(--clr-break);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  min-height: 150px;
+  resize: vertical;
+}
+.body-input:hover .body-input-box {
+  border: 1px solid var(--clr-accent);
+}
+.body-input-box::placeholder {
+  color: var(--clr-text);
+}
+.body-input:hover .body-input-box::placeholder {
+  color: var(--clr-accent);
+}
+
+.submit-button-container {
+  width: 95%;
+  margin: 25px;
+}
+
+.submit-button {
+  border: 1px solid var(--clr-accent);
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  background-color: var(--clr-accent);
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1.2em;
+  color: var(--clr-light);
+  cursor: pointer;
+}
+.submit-button:hover {
+  transform: scale(105%);
+  transition: transform 0.2s;
+}
+.submit-button:active {
+  transform: scale(95%);
+  transition: transform 0.2s;
+}
+
+.submit-subtitle {
+  font-family: "Avant Garde", sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: .8;
+  color: var(--clr-text);
+  margin-bottom: 10px;
 }

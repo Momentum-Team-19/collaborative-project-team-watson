@@ -1,20 +1,24 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import { Button, TextField, Box } from "@mui/material";
-import AuthContext from "./AuthContext";
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import { Button, TextField, Box } from '@mui/material';
+import AuthContext from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Q_Create = () => {
   const { token } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
   // const [author, setAuthor] = useState("");
+
+  const navigate = useNavigate();
 
   const handleCreateClick = () => {
     if (token) {
-      setShowForm(!showForm);
+      setShowForm(true);
     } else {
-      alert("You must be logged in to create a question.");
+      setShowForm(false);
+      navigate('/login');
     }
   };
 
@@ -28,11 +32,11 @@ const Q_Create = () => {
 
     try {
       const response = await axios.post(
-        "https://qb.fly.dev/questions",
+        'https://qb.fly.dev/questions',
         questionData,
         {
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
             Authorization: `Token ${token}`,
           },
         }
@@ -40,35 +44,35 @@ const Q_Create = () => {
 
       // Hide the form and reset fields
       setShowForm(false);
-      setTitle("");
-      setBody("");
+      setTitle('');
+      setBody('');
     } catch (error) {
-      console.error("There was an error creating the question:", error);
+      console.error('There was an error creating the question:', error);
     }
   };
 
   return (
     <Box>
-      <Button variant="contained" color="primary" onClick={handleCreateClick}>
+      <Button variant='contained' color='primary' onClick={handleCreateClick}>
         Ask A Question
       </Button>
 
       {showForm && (
         <form onSubmit={handleSubmitClick}>
           <TextField
-            label="Title"
-            variant="outlined"
+            label='Title'
+            variant='outlined'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
-            label="Body"
-            variant="outlined"
+            label='Body'
+            variant='outlined'
             value={body}
             onChange={(e) => setBody(e.target.value)}
           />
 
-          <Button type="submit" variant="contained" color="secondary">
+          <Button type='submit' variant='contained' color='secondary'>
             Submit
           </Button>
         </form>

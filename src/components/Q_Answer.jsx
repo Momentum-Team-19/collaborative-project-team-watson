@@ -1,18 +1,21 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import { Box, Button, TextField } from "@mui/material";
-import AuthContext from "./AuthContext";
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import { Box, Button, TextField } from '@mui/material';
+import AuthContext from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Q_Answer = ({ questionID }) => {
   const { token } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
+
+  const navigate = useNavigate();
 
   const handleAnswerClick = async (e) => {
     if (token) {
       setShowForm(!showForm);
     } else {
-      alert("You must be logged in to answer a question.");
+      navigate('/login');
     }
   };
 
@@ -26,37 +29,38 @@ const Q_Answer = ({ questionID }) => {
 
     try {
       const response = await axios.post(
-        `https://qb.fly.dev/questions/${questionID}/answers`, answerData,
+        `https://qb.fly.dev/questions/${questionID}/answers`,
+        answerData,
         {
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
             Authorization: `Token ${token}`,
           },
         }
       );
       // Hide the form and reset fields
       setShowForm(false);
-      setText("");
+      setText('');
     } catch (error) {
-      console.error("There was an error answering the question:", error);
+      console.error('There was an error answering the question:', error);
     }
   };
 
   return (
     <Box>
-      <Button variant="contained" color="success" onClick={handleAnswerClick}>
+      <Button variant='contained' color='success' onClick={handleAnswerClick}>
         Answer Question
       </Button>
 
       {showForm && (
         <form onSubmit={handleSubmitClick}>
           <TextField
-            label="Answer"
-            variant="outlined"
+            label='Answer'
+            variant='outlined'
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <Button type="submit" variant="contained" color="success">
+          <Button type='submit' variant='contained' color='success'>
             Submit
           </Button>
         </form>
