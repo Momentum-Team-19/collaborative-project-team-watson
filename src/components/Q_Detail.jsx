@@ -21,11 +21,6 @@ const Q_Detail = () => {
     navigate(-1);
   };
 
-  console.log('loggedInUser', loggedInUser);
-  if (questionData) {
-    console.log('questionData', questionData);
-  }
-
   useEffect(() => {
     if (!loggedInUser) {
       return;

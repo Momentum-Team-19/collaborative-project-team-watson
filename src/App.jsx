@@ -46,7 +46,6 @@ function App() {
     // Fetching the logged-in user's data
     const fetchLoggedInUser = async () => {
       if (!token) {
-        console.log('no token');
         return;
       }
 
