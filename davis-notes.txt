@@ -28,6 +28,13 @@ To-Do's f
 -create area inside user_profile to display bookmarked questions/answers ✅/🚫
 
 
+-other user profiles 
+
+-tags
+
+-upvoting?
+
+
 - gamification: awards? count how many 'solved' answers you've provided? etc. 
 
 -notifications:
@@ -36,5 +43,7 @@ To-Do's f
 -when creating question/answer, page ins't showing new question/answer until reload
   -answer sholdn't cut off in elipsis after 1 line 
 
--upvoting?
+
+
+
 
