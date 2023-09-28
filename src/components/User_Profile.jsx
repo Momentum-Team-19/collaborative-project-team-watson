@@ -6,7 +6,7 @@ import Q_Answer_Box from 'components/Q_Answer_Box';
 import AuthContext from './AuthContext';
 
 const User_Profile = ({ isLoggedIn }) => {
-  const { userID } = useParams();
+  const { username } = useParams();
   const { token } = useContext(AuthContext);
 
   const [userInfo, setUserInfo] = useState(null);
@@ -32,45 +32,20 @@ const User_Profile = ({ isLoggedIn }) => {
   }
 
   useEffect(() => {
-    if (isLoggedIn) {
-      const fetchUserInfo = async () => {
-        if (isLoggedIn) {
-          try {
-            const userInfoUrl = `https://qb.fly.dev/auth/users/${userID}/`;
-            const userInfoResponse = await axios.get(userInfoUrl, {
-              headers: {
-                Accept: 'application/json',
-                Authorization: `Token ${token}`,
-              },
-            });
-            setUserInfo(userInfoResponse.data);
-            const questionInfoUrl = 'https://qb.fly.dev/questions/me';
-            const questionInfoResponse = await axios.get(questionInfoUrl, {
-              headers: {
-                Accept: 'application/json',
-                Authorization: `Token ${token}`,
-              },
-            });
-            setQuestionInfo(questionInfoResponse.data);
-            const answerInfoUrl = 'https://qb.fly.dev/answers/me';
-            const answerInfoResponse = await axios.get(answerInfoUrl, {
-              headers: {
-                Accept: 'application/json',
-                Authorization: `Token ${token}`,
-              },
-            });
-            setAnswersInfo(answerInfoResponse.data);
-          } catch (error) {
+    const fetchUserInfo = async () => {
+        try {
+            const profileUrl = `https://qb.fly.dev/profiles/${username}`;
+            const profileResponse = await axios.get(profileUrl);
+            setUserInfo(profileResponse.data);
+            setQuestionInfo(profileResponse.data.questions);
+            setAnswersInfo(profileResponse.data.answers);
+        } catch (error) {
             console.error('There was an error fetching data', error);
-          }
-        } else {
-          setUserInfo(null);
         }
-      };
+    };
 
-      fetchUserInfo();
-    }
-  }, [token, isLoggedIn]);
+    fetchUserInfo();
+}, [username]);
 
   const formatPhoneNumber = (userPhone) => {
     if (!userPhone) return null;
