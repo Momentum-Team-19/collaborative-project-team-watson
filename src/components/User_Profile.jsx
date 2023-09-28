@@ -152,7 +152,7 @@ const User_Profile = ({ isLoggedIn }) => {
               <div className='qBoxes'>
                 {answersInfo &&
                   answersInfo.map((answer, index) => (
-                    <Link to={`/questions/${answer.question}`} key={index}>
+                    <Link to={`/question/${answer.question}`} key={index}>
                       <Q_Answer_Box
                         isLoggedIn={isLoggedIn}
                         token={token}
