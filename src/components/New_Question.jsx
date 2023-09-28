@@ -32,6 +32,7 @@ const New_Question = ({ token, isLoggedIn }) => {
   }, [isLoggedIn, navigate]);
 
   const handleSubmitClick = async (e) => {
+    console.log('submit clicked')
     e.preventDefault();
 
     try {
@@ -47,7 +48,8 @@ const New_Question = ({ token, isLoggedIn }) => {
         body: '',
         tags: [],
       });
-      navigate(-1);
+      console.log(response)
+      // navigate(-1);
     } catch (error) {
       console.error('There was an error creating the New Question:', error);
       setError(error.message);

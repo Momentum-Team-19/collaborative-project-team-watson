@@ -5,27 +5,30 @@ import { Box, Button } from '@mui/material';
 
 const Q_Bookmark = ({ questionData, onToggleBookmarked }) => {
     const { token, loggedInUser } = useContext(AuthContext);
+    
+    console.log('Q_Bookmark: questionData', questionData);
+    console.log('questionId', questionData.id)
 
     const handleBookmarkClick = async (e) => {
         const updatedBookmarkedState = !questionData.bookmarked; // Toggle the current state
-
-        // const bookmarkData = {
-        //     id,
-        //     text,
-        //     question.id,
-        //   };
+        
+        const bookmarkData = {
+            question: questionData.id
+          };
 
         try {
             const response = await axios.put(
-                `https://qb.fly.dev/questions/bookmarks`,
-                // bookmarkData,
+                `https://qb.fly.dev/bookmarks/`,
+                bookmarkData,
                 {
                     headers: {
                         Accept: 'application/json',
-                        Authorization: `Token ${token.token}`,
+                        Authorization: `Token ${token}`,
                     },
                 }
             );
+            console.log('Q_Bookmark: response', response);
+            
             onToggleBookmarked(updatedBookmarkedState);
         } catch (error) {
             console.error(
