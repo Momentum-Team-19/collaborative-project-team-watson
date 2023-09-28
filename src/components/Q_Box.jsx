@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Q_Box = ({ question, onClick }) => {
   let topAnswer = '';
@@ -37,16 +38,18 @@ const Q_Box = ({ question, onClick }) => {
       }}
     >
       <CardContent>
-        <Typography
-          style={{
-            fontSize: '16px',
-            fontWeight: 'bold',
-            color: 'var(--clr-dark)',
-          }}
-          gutterBottom
-        >
-          Title: {question.title || 'Default Title'}
-        </Typography>
+        <Link to={{ pathname: `/question/${question.id}` }}>
+          <Typography
+            style={{
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: 'var(--clr-dark)',
+            }}
+            gutterBottom
+          >
+            Title: {question.title || 'Default Title'}
+          </Typography>
+        </Link>
 
         <Typography
           style={{
@@ -56,7 +59,14 @@ const Q_Box = ({ question, onClick }) => {
           }}
           gutterBottom
         >
-          Author: {question.author ? question.author.username : 'Default Title'}
+          Author:{' '}
+          {question.author ? (
+            <Link to={{ pathname: `/profile/${question.author.username}` }}>
+              {question.author.username}
+            </Link>
+          ) : (
+            'Default Title'
+          )}
         </Typography>
 
         <Typography
