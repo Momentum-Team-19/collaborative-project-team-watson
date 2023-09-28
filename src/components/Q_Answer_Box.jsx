@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'; // Added useStat
 import { Card, CardContent, Typography } from '@mui/material';
 import Q_Answer_Accepted from './Q_Answer_Accepted';
 import AuthContext from './AuthContext';
+import { Link } from 'react-router-dom';
 
 const Q_Answer_Box = ({ answer }) => {
   const token = useContext(AuthContext);
@@ -18,42 +19,66 @@ const Q_Answer_Box = ({ answer }) => {
   console.log('answer ', answer);
 
   return (
-    <Card
-      className='a-box'
+    <div
+      className='answer-container'
       style={{
-        width: '80%',
+        width: '95%',
         margin: 'auto',
         borderRadius: '12px',
         backgroundColor: currentAnswer.accepted
           ? 'var(--clr-accepted)'
-          : 'var(--clr-notaccepted)',
+          : 'var(--clr-nav)',
         marginBottom: '16px',
+        position: 'relative',
       }}
     >
-      <CardContent>
+      {currentAnswer.accepted && (
+        <div
+          // style={{
+          //   position: 'absolute',
+          //   top: '10px',
+          //   right: '10px',
+          //   padding: '5px',
+          //   backgroundColor: 'green',
+          //   color: 'white',
+          //   borderRadius: '5px',
+          // }}
+          className='accepted-label'
+        >
+          Accepted
+        </div>
+      )}
+      <div className='author-box'>
         <Typography
           style={{
-            fontSize: '14px',
+            fontSize: '1rem',
             fontStyle: 'italic',
             color: 'var(--clr-dark)',
+            marginBottom: '20px',
           }}
           gutterBottom
         >
-          Author: {answer.author ? answer.author.username : 'Anonymous'}
+          Author:{' '}
+          {answer.author ? (
+            <Link to={`/profile/${answer.author.username}`}>
+              {answer.author.username}
+            </Link>
+          ) : (
+            'Anonymous'
+          )}
         </Typography>
-
-        <Typography
-          style={{
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            fontSize: '14px',
-            marginBottom: '8px',
-            color: 'var(--clr-dark)',
-          }}
-        >
-          Answer: {answer.text}
-        </Typography>
+        <p className='response-text'>Response:</p>
+        <div className='answer-box'>
+          <Typography
+            style={{
+              fontSize: '14px',
+              marginBottom: '8px',
+              color: 'var(--clr-dark)',
+            }}
+          >
+            {answer.text}
+          </Typography>
+        </div>
 
         <Q_Answer_Accepted
           answer={currentAnswer}
@@ -61,8 +86,8 @@ const Q_Answer_Box = ({ answer }) => {
           onToggleAccepted={handleAnswerAccepted}
           loggedInUser={loggedInUser}
         />
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

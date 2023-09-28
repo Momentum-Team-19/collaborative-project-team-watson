@@ -20,7 +20,8 @@ To-Do's f
 -make 'next' and 'prev' buttons also load the page at the top ✅
 -route user back to where they were previously after logging in/registering or with q_details's 'back' button ✅
 - add 'create' button to NavBar as well ✅
--add link to author usernames
+-other user profiles ✅
+-add link to author usernames ✅
 
 -User Profile: 
   -user image ✅/🚫
@@ -30,8 +31,6 @@ To-Do's f
 
 -tags ✅/🚫
 
-
--other user profiles 
 
 -upvoting?
 

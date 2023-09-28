@@ -97,42 +97,65 @@ const Q_Detail = () => {
 
   return (
     <>
-      <Box textAlign='left'>
-        <Typography variant='h4' style={{ color: 'var(--clr-dark)' }}>
-          {questionData.title}
-        </Typography>
-        <Typography variant='h5' style={{ color: 'var(--clr-dark)' }}>
-          Author:{' '}
-          {questionData.author.username ? (
-            <Link to={`/profile/${questionData.author.username}`}>
-              {questionData.author.username}
-            </Link>
-          ) : (
-            'N/A'
-          )}
-        </Typography>
-      </Box>
-
-      <Container
-        maxWidth={false}
-        style={{ width: '100%', backgroundColor: 'var(--clr-light)' }}
-      >
-        <Box textAlign='left'>
-          <Typography variant='body2' style={{ color: 'var(--clr-dark)' }}>
-            Body: {questionData.body}{' '}
+      <div className='detail-container'>
+        <Box textAlign='left' marginBottom={'30px'}>
+          <Typography
+            variant='h4'
+            style={{ color: 'var(--clr-dark)', marginBottom: '10px' }}
+          >
+            {questionData.title}
+          </Typography>
+          <Typography variant='h5' style={{ color: 'var(--clr-dark)' }}>
+            Author:{' '}
+            {questionData.author.username ? (
+              <Link to={`/profile/${questionData.author.username}`}>
+                {questionData.author.username}
+              </Link>
+            ) : (
+              'N/A'
+            )}
           </Typography>
         </Box>
-      </Container>
 
-      <Q_Answer_List
-        token={token}
-        answers={questionData.answers}
-        loggedInUser={loggedInUser}
-      />
+        <Container
+          maxWidth={false}
+          style={{ width: '100%', backgroundColor: 'var(--clr-light)' }}
+        >
+          <div className='body-container'>
+            <Box textAlign='left'>
+              <p className='body-text'>Question:</p>
+              <Typography variant='body2' style={{ color: 'var(--clr-dark)' }}>
+                {questionData.body}{' '}
+              </Typography>
+            </Box>
+          </div>
+        </Container>
+      </div>
 
-      <Stack spacing={2} direction={'row'}>
-        <Q_Answer token={token} questionID={questionID} />
+      {questionData.tags.length !== 0 ? (
+        <div className='tags-container'>
+          <Box textAlign='left'>
+            <p className='body-text'>Tags:</p>
+            <Typography variant='body2' style={{ color: 'var(--clr-dark)' }}>
+              {questionData.tags} {console.log(questionData)}
+            </Typography>
+          </Box>
+        </div>
+      ) : (
+        <div className='tags-container'>
+          <Box textAlign='left'>
+            <p className='tag-text'>Tags:</p>
+            <Typography
+              variant='body3'
+              style={{ color: 'var(--clr-text)', fontSize: '1rem' }}
+            >
+              No Tags
+            </Typography>
+          </Box>
+        </div>
+      )}
 
+      <Stack spacing={2} direction={'row'} style={{ marginLeft: '45px' }}>
         {/* Conditionally render Q_Edit and Q_Delete if user is author */}
         {loggedInUser &&
           loggedInUser.username === questionData.author.username && (
@@ -148,11 +171,21 @@ const Q_Detail = () => {
         />
       </Stack>
 
+      <Q_Answer_List
+        token={token}
+        answers={questionData.answers}
+        loggedInUser={loggedInUser}
+      />
+
+      <div className='answer-button-container'>
+        <Q_Answer token={token} questionID={questionID} />
+      </div>
+
       <Button
         variant='contained'
         color='primary'
         onClick={handleBack}
-        sx={{ marginTop: '10px' }}
+        sx={{ marginTop: '10px', marginLeft: '55px' }}
       >
         Back
       </Button>

@@ -47,17 +47,31 @@ const Q_Answer = ({ questionID }) => {
   };
 
   return (
-    <Box>
-      <Button variant='contained' color='success' onClick={handleAnswerClick}>
+    <div className='question-input-container'>
+      <Button
+        variant='contained'
+        color='success'
+        onClick={handleAnswerClick}
+        style={{ width: '200px', marginBottom: '20px' }}
+      >
         Answer Question
       </Button>
 
       {showForm && (
-        <form onSubmit={handleSubmitClick}>
-          <TextField
+        <form onSubmit={handleSubmitClick} className='answer-form'>
+          {/* <TextField
             label='Answer'
             variant='outlined'
             value={text}
+            onChange={(e) => setText(e.target.value)}
+          /> */}
+          <textarea
+            className='answer-input-box'
+            placeholder="example: I've seen this problem before and I have a possible solution."
+            type='text'
+            name='body'
+            id='body'
+            required
             onChange={(e) => setText(e.target.value)}
           />
           <Button type='submit' variant='contained' color='success'>
@@ -65,7 +79,7 @@ const Q_Answer = ({ questionID }) => {
           </Button>
         </form>
       )}
-    </Box>
+    </div>
   );
 };
 
