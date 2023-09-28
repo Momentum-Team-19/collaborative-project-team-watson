@@ -118,7 +118,7 @@ const NavBar = ({
               </p>
               {pathname !== '/profile' ? (
                 <Link
-                  to={{ pathname: `/profile/${userInfo.id}` }}
+                  to={{ pathname: `/profile/${userInfo.username}` }}
                   className='activeUserLink'
                 >
                   <img className='userNavImg' src={userImg}></img>

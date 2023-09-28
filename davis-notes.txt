@@ -27,10 +27,10 @@ To-Do's f
 
 -create area inside user_profile to display bookmarked questions/answers ✅/🚫
 
+-tags ✅/🚫
+
 
 -other user profiles 
-
--tags
 
 -upvoting?
 

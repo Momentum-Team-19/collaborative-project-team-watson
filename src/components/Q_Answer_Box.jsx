@@ -15,6 +15,8 @@ const Q_Answer_Box = ({ answer }) => {
     });
   };
 
+  console.log('answer ', answer);
+
   return (
     <Card
       className='a-box'
@@ -37,7 +39,7 @@ const Q_Answer_Box = ({ answer }) => {
           }}
           gutterBottom
         >
-          Author: {answer.author.username || 'Anonymous'}
+          Author: {answer.author ? answer.author.username : 'Anonymous'}
         </Typography>
 
         <Typography

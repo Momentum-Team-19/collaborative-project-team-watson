@@ -149,7 +149,7 @@ function App() {
         />
 
         <Route
-          path='/profile/:userID'
+          path='/profile/:username'
           element={<User_Profile token={token} isLoggedIn={isLoggedIn} />}
         />
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 
 const Q_Box = ({ question, onClick }) => {
-
   let topAnswer = '';
   if (question.answers) {
     if (question.answers.length > 0) {
@@ -57,7 +56,7 @@ const Q_Box = ({ question, onClick }) => {
           }}
           gutterBottom
         >
-          Author: {question.author.username || 'Default Title'}
+          Author: {question.author ? question.author.username : 'Default Title'}
         </Typography>
 
         <Typography
@@ -77,7 +76,6 @@ const Q_Box = ({ question, onClick }) => {
           Author: {question.author || 'Default Author'} | Answers: {question.answers || 'Default Answers'}
         </Typography> */}
         {answerContent}
-        
       </CardContent>
     </Card>
   );
