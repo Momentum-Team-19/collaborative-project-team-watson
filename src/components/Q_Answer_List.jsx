@@ -9,16 +9,31 @@ const Q_Answer_List = ({ answers }) => {
   if (Array.isArray(answers)) {
     return (
       <>
-        <p style={{ color: 'var(--clr-dark)' }}>Test Q_Answer_List</p>
-        {answers &&
-          answers.map((answer, index) => (
-            <Q_Answer_Box
-              key={index}
-              answer={answer}
-              token={token}
-              loggedInUser={loggedInUser}
-            />
-          ))}
+        <div className='answers-container'>
+          <p className='answers-text'>Answers:</p>
+          {/* {console.log(answers)} */}
+          {answers.length !== 0 ? (
+            answers.map((answer, index) => (
+              <Q_Answer_Box
+                key={index}
+                answer={answer}
+                token={token}
+                loggedInUser={loggedInUser}
+              />
+            ))
+          ) : (
+            <>
+              <div className='no-answers-container'>
+                <div className='no-answer-container'>
+                  <div className='no-answers-texts'>
+                    <p className='no-answers-text'>No Answers Yet</p>
+                    <p className='no-answers-text'>Be the first to answer!</p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </>
     );
   }
