@@ -16,8 +16,6 @@ const Q_Answer_Box = ({ answer }) => {
     });
   };
 
-  console.log('answer ', answer);
-
   return (
     <div
       className='answer-container'

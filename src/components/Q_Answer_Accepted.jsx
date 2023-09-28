@@ -17,7 +17,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
         {
           headers: {
             Accept: "application/json",
-            Authorization: `Token ${token.token}`,
+            Authorization: `Token ${token}`,
           },
         }
       );
@@ -64,7 +64,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
   return (
     <div>
       {loggedInUser &&
-        loggedInUser?.loggedInUser?.username === questionData.author.username && (
+        loggedInUser?.username === questionData.author.username && (
           <button onClick={handleAnswerAccepted}>
             {answer.accepted ? "Unaccept Answer" : "Accept Answer"}
           </button>
