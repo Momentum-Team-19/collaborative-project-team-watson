@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import AuthContext from "./AuthContext";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import AuthContext from './AuthContext';
 
 const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
-  const { token, loggedInUser }  = useContext(AuthContext);
+  const { token, loggedInUser } = useContext(AuthContext);
   const [questionData, setQuestionData] = useState(null);
-  
-  
+
   const handleAnswerAccepted = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const updatedAcceptedState = !answer.accepted; // Toggle the current state
 
     try {
@@ -16,7 +17,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
         { accepted: updatedAcceptedState }, // Update with the new state
         {
           headers: {
-            Accept: "application/json",
+            Accept: 'application/json',
             Authorization: `Token ${token}`,
           },
         }
@@ -24,7 +25,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
       onToggleAccepted(updatedAcceptedState);
     } catch (error) {
       console.error(
-        "There was an error toggling the accepted status of the answer",
+        'There was an error toggling the accepted status of the answer',
         error
       );
     }
@@ -37,7 +38,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
           `https://qb.fly.dev/questions/${answer.question}`,
           {
             headers: {
-              Accept: "application/json",
+              Accept: 'application/json',
             },
           }
         );
@@ -46,7 +47,7 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
         setQuestionData(response.data);
       } catch (error) {
         // Handle the error
-        console.error("There was an error fetching data", error);
+        console.error('There was an error fetching data', error);
       }
     };
 
@@ -65,8 +66,8 @@ const Q_Answer_Accepted = ({ answer, onToggleAccepted }) => {
     <div>
       {loggedInUser &&
         loggedInUser?.username === questionData.author.username && (
-          <button onClick={handleAnswerAccepted}>
-            {answer.accepted ? "Unaccept Answer" : "Accept Answer"}
+          <button onClick={(e) => handleAnswerAccepted(e)}>
+            {answer.accepted ? 'Unaccept Answer' : 'Accept Answer'}
           </button>
         )}
     </div>

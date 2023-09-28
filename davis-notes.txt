@@ -43,6 +43,7 @@ To-Do's f
 -when creating question/answer, page ins't showing new question/answer until reload
   -answer sholdn't cut off in elipsis after 1 line 
 
+-FIX /PROFILES/{USERNAME} TO FIX AUTHOR NOT SHOWING IN QUES/ANSW ON USER PROFILE 👀
 
 
 
