@@ -731,6 +731,14 @@ header {
   transition: transform 0.2s;
 }
 
+.placeholder-box {
+  padding: 2px;
+  width: 72px;
+  height: 25px;
+  margin: 15px;
+  border: 1px solid var(--clr-light);
+}
+
 .userQuestionsContainer {
   display: flex;
   justify-content: center;
