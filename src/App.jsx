@@ -133,7 +133,7 @@ function App() {
           }
         />
         <Route
-          path='/questions/:questionID'
+          path='/question/:questionID'
           element={
             <Q_Detail
               token={token}

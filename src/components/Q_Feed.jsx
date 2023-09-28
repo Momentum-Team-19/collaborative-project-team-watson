@@ -36,9 +36,7 @@ const Q_Feed = ({ searchResults, itemsPerPage, children }) => {
         <div className='qFeedContainer'>
           {paginateData() &&
             paginateData().map((question, index) => (
-              <Link to={`/questions/${question.id}`} key={index}>
-                <Q_Box question={question} />
-              </Link>
+              <Q_Box question={question} key={index} />
             ))}
           <div className='paginationControlsContainer'>
             <div className='prevContainer'>

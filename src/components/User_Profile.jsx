@@ -33,19 +33,19 @@ const User_Profile = ({ isLoggedIn }) => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-        try {
-            const profileUrl = `https://qb.fly.dev/profiles/${username}`;
-            const profileResponse = await axios.get(profileUrl);
-            setUserInfo(profileResponse.data);
-            setQuestionInfo(profileResponse.data.questions);
-            setAnswersInfo(profileResponse.data.answers);
-        } catch (error) {
-            console.error('There was an error fetching data', error);
-        }
+      try {
+        const profileUrl = `https://qb.fly.dev/profiles/${username}`;
+        const profileResponse = await axios.get(profileUrl);
+        setUserInfo(profileResponse.data);
+        setQuestionInfo(profileResponse.data.questions);
+        setAnswersInfo(profileResponse.data.answers);
+      } catch (error) {
+        console.error('There was an error fetching data', error);
+      }
     };
 
     fetchUserInfo();
-}, [username]);
+  }, [username]);
 
   const formatPhoneNumber = (userPhone) => {
     if (!userPhone) return null;
@@ -106,10 +106,8 @@ const User_Profile = ({ isLoggedIn }) => {
               <p className='recentActivityText'>Questions</p>
               <div className='qBoxes'>
                 {questionInfo &&
-                  questionInfo.map((question) => (
-                    <Link to={`/questions/${question.id}`} key={question.id}>
-                      <Q_Box question={question} />
-                    </Link>
+                  questionInfo.map((question, index) => (
+                    <Q_Box question={question} key={index} />
                   ))}
               </div>
             </div>
