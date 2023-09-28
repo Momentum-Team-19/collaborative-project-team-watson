@@ -60,7 +60,10 @@ const Q_Feed = ({ searchResults, itemsPerPage, children }) => {
               </p>
             </div>
           </div>
-          <Q_Create token={token} />
+          <Link to={{ pathname: '/create' }}>
+            <div className='ask-question'>Ask A Question</div>
+          </Link>
+          {/* <Q_Create token={token} /> */}
         </div>
       </>
     );

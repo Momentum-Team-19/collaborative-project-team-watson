@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Q_Box from 'components/Q_Box';
 import Q_Answer_Box from 'components/Q_Answer_Box';
 import AuthContext from './AuthContext';
+import ScrollToTop from './ScrollToTop';
 
 const User_Profile = ({ isLoggedIn }) => {
   const { username } = useParams();
@@ -65,6 +66,7 @@ const User_Profile = ({ isLoggedIn }) => {
   if (userInfo) {
     return (
       <>
+        <ScrollToTop />
         <div className='profileContainer'>
           <div className='profileInfoContainer'>
             <div className='profileInfoBox'>

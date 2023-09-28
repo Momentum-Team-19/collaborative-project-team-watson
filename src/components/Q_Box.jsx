@@ -19,7 +19,13 @@ const Q_Box = ({ question, onClick }) => {
     );
   } else {
     answerContent = (
-      <Typography style={{ marginTop: '8px', fontStyle: 'italic' }}>
+      <Typography
+        style={{
+          marginTop: '8px',
+          fontStyle: 'italic',
+          color: 'var(--clr-dark)',
+        }}
+      >
         No answers yet.
       </Typography>
     );

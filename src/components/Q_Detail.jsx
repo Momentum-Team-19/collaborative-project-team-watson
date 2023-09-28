@@ -16,7 +16,7 @@ const Q_Detail = () => {
   const [questionData, setQuestionData] = useState(null);
 
   const navigate = useNavigate();
-  
+
   const handleBack = () => {
     navigate(-1);
   };
@@ -26,7 +26,7 @@ const Q_Detail = () => {
       ...currentQuestion,
       bookmarked: updatedBookmarkedState,
     });
-  }
+  };
 
   useEffect(() => {
     if (!loggedInUser) {
@@ -102,7 +102,14 @@ const Q_Detail = () => {
           {questionData.title}
         </Typography>
         <Typography variant='h5' style={{ color: 'var(--clr-dark)' }}>
-          Author: {questionData.author.username || 'N/A'}
+          Author:{' '}
+          {questionData.author.username ? (
+            <Link to={`/profile/${questionData.author.username}`}>
+              {questionData.author.username}
+            </Link>
+          ) : (
+            'N/A'
+          )}
         </Typography>
       </Box>
 
@@ -135,12 +142,18 @@ const Q_Detail = () => {
             </>
           )}
 
-        <Q_Bookmark questionData={questionData} onToggleBookmarked={onToggleBookmarked}/>
+        <Q_Bookmark
+          questionData={questionData}
+          onToggleBookmarked={onToggleBookmarked}
+        />
       </Stack>
 
-
-
-      <Button variant='contained' color='primary' onClick={handleBack} sx={{ marginTop:'10px'}}>
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={handleBack}
+        sx={{ marginTop: '10px' }}
+      >
         Back
       </Button>
     </>
