@@ -116,7 +116,7 @@ const NavBar = ({
               <p className='logoutText' onClick={handleLogout}>
                 logout
               </p>
-              {pathname !== '/profile' ? (
+              {pathname !== `/profile/${userInfo.username}` ? (
                 <Link
                   to={{ pathname: `/profile/${userInfo.username}` }}
                   className='activeUserLink'
