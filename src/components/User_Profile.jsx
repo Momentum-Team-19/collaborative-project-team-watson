@@ -150,16 +150,18 @@ const User_Profile = ({ isLoggedIn }) => {
             <div className='userQuestionsContainer'>
               <p className='recentActivityText'>Answers</p>
               <div className='qBoxes'>
-                {answersInfo &&
-                  answersInfo.map((answer, index) => (
-                    <Link to={`/question/${answer.question}`} key={index}>
-                      <Q_Answer_Box
-                        isLoggedIn={isLoggedIn}
-                        token={token}
-                        answer={answer}
-                      />
-                    </Link>
-                  ))}
+                <div className='answer-button-container'>
+                  {answersInfo &&
+                    answersInfo.map((answer, index) => (
+                      <Link to={`/question/${answer.question}`} key={index}>
+                        <Q_Answer_Box
+                          isLoggedIn={isLoggedIn}
+                          token={token}
+                          answer={answer}
+                        />
+                      </Link>
+                    ))}
+                </div>
               </div>
             </div>
           ) : null}
