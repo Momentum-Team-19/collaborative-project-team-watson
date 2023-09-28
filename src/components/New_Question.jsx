@@ -32,6 +32,7 @@ const New_Question = ({ token, isLoggedIn }) => {
   }, [isLoggedIn, navigate]);
 
   const handleSubmitClick = async (e) => {
+    console.log('submit clicked')
     e.preventDefault();
 
     try {
